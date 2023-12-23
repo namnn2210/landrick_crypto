@@ -2,7 +2,7 @@
 <header id="topnav" class="defaultscroll sticky">
     <div class="container">
         <!-- Logo container-->
-        <a class="logo" href="index.html">
+        <a class="logo" href="{% url 'index' %}">
             <span class="logo-light-mode">
                 <img src="assets/images/logo-dark.png" class="l-dark" height="24" alt="">
                 <img src="assets/images/logo-light.png" class="l-light" height="24" alt="">
@@ -46,7 +46,7 @@
         <div id="navigation">
             <!-- Navigation Menu-->   
             <ul class="navigation-menu nav-light">
-                <li><a href="index.html" class="sub-menu-item">Home</a></li>
+                <li><a href="{% url 'index' %}" class="sub-menu-item">Home</a></li>
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)">Landing</a><span class="menu-arrow"></span>
                     <ul class="submenu megamenu">
