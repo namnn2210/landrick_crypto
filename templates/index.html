@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load humanize %}
 
 {% include  'partials/main.html' %}
 
@@ -59,10 +59,10 @@
                                 Price
                             </th>
                             <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3" style="width: 150px;">
-                                Change(%)
+                                Volume Change 24h(%)
                             </th>
                             <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3" style="width: 150px;">
-                                Change($)
+                                Percent Change 24h(%)
                             </th>
                             <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3" style="width: 150px;">
                                 Marketcap
@@ -74,173 +74,23 @@
                         </thead>
 
                         <tbody>
+                        {%for item in list_format_latest %}
                         <tr>
                             <th class="p-3">
                                 <div class="align-items-center">
-                                    <img src="{% static 'assets/images/crypto/bitcoin.png' %}" class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Bitcoin <span class="text-muted">BTC</span>
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{item.id}}.png" alt="Crypto Symbol" class="me-3" height="32">
+                                    <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span class="text-muted">{{item.symbol}}</span>
                                     </p>
                                 </div>
                             </th>
-                            <td class="p-3">$34587</td>
-                            <td class="text-danger p-3">-2.5%</td>
-                            <td class="text-danger p-3">-$745</td>
-                            <td class="text-muted p-3">$725,354M</td>
+                            <td class="p-3">${{item.price|floatformat:2|intcomma}}</td>
+                            <td class="text-danger p-3">{{item.volume_change_24h}}%</td>
+                            <td class="text-danger p-3">{{item.percent_change_24h}}$</td>
+                            <td class="text-muted p-3">${{item.market_cap|floatformat:2|intcomma}}</td>
                             <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
+                                                        class="btn btn-sm btn-primary">Buy</a></td>
                         </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/litecoin.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Litecoin <span class="text-muted">LTC</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$216</td>
-                            <td class="text-success p-3">+.264%</td>
-                            <td class="text-success p-3">+$.264</td>
-                            <td class="text-muted p-3">$11,100M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/auroracoin.png" %}' class="me-3"
-                                         height="32" alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Auroracoin <span class="text-muted">ARC</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$452</td>
-                            <td class="text-danger p-3">-1.9%</td>
-                            <td class="text-danger p-3">-$1.9</td>
-                            <td class="text-muted p-3">$45,785M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/coinye.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Coinye <span class="text-muted">CNY</span></p>
-                                </div>
-                            </th>
-                            <td class="p-3">$154</td>
-                            <td class="text-success p-3">+1.05%</td>
-                            <td class="text-success p-3">+$1.05</td>
-                            <td class="text-muted p-3">$85,478M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/ethereum.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mt-2 d-inline fw-normal h6">Ethereum Coin <span
-                                            class="text-muted">ETH</span></p>
-                                </div>
-                            </th>
-                            <td class="p-3">$854</td>
-                            <td class="text-success p-3">+1.705%</td>
-                            <td class="text-success p-3">+$1.705</td>
-                            <td class="text-muted p-3">$112,452M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/potcoin.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Potcoin <span class="text-muted">PTC</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$548</td>
-                            <td class="text-danger p-3">-3.2%</td>
-                            <td class="text-danger p-3">-$3.2</td>
-                            <td class="text-muted p-3">$4,712M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/zcash.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Zcash Coin <span class="text-muted">ZCC</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$965</td>
-                            <td class="text-success p-3">+1.465%</td>
-                            <td class="text-success p-3">+$1.465</td>
-                            <td class="text-muted p-3">$487,552M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/primecoin.png" %}' class="me-3"
-                                         height="32" alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Prime coin <span class="text-muted">XPM</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$4875</td>
-                            <td class="text-danger p-3">-1.08%</td>
-                            <td class="text-danger p-3">-$1.08</td>
-                            <td class="text-muted p-3">$55,221M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/blocknet.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Blocknet <span class="text-muted">BLOCK</span>
-                                    </p>
-                                </div>
-                            </th>
-                            <td class="p-3">$478</td>
-                            <td class="text-success p-3">+2.8%</td>
-                            <td class="text-success p-3">+$2.8</td>
-                            <td class="text-muted p-3">$66,552M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
-
-                        <tr>
-                            <th class="p-3">
-                                <div class="align-items-center">
-                                    <img src='{% static "assets/images/crypto/kucoin.png" %}' class="me-3" height="32"
-                                         alt="">
-                                    <p class="mb-0 d-inline fw-normal h6">Kucoin <span class="text-muted">KCS</span></p>
-                                </div>
-                            </th>
-                            <td class="p-3">$545</td>
-                            <td class="text-success p-3">+1.5%</td>
-                            <td class="text-success p-3">+$1.5</td>
-                            <td class="text-muted p-3">$98,562M</td>
-                            <td class="p-3 text-end"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-primary">Trade</a></td>
-                        </tr>
+                        {% endfor %}
                         </tbody>
                     </table><!--end table-->
                 </div>
