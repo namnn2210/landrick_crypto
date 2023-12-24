@@ -27,11 +27,39 @@ def get_listing_latest(count=10):
         return list_format_latest
     return None
 
+def get_btc_price():
+    # Replace 'YOUR_API_KEY' with your actual CoinMarketCap API key
+    api_key = 'ace6f6a9-d2fb-410e-b1c1-ef3e904e329d'
+
+    # Define the endpoint URL for Bitcoin (BTC)
+    endpoint_url = f'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
+
+    # Set the parameters for the request
+    params = {
+        'symbol': 'BTC',  # Symbol for Bitcoin
+        'convert': 'USD',  # Convert the price to USD (you can change this to other currencies)
+    }
+
+    # Add your API key to the headers
+    headers = {
+        'X-CMC_PRO_API_KEY': api_key,
+    }
+
+    # Make the API request
+    response = requests.get(endpoint_url, params=params, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        btc_data = data['data']['BTC']
+        btc_price = btc_data['quote']['USD']['price']
+        return btc_price
+    else:
+        return None
 
 def index(request):
     list_format_latest = get_listing_latest()
-    if list_format_latest:
-        return render(request=request, template_name="index.html", context={'list_format_latest': list_format_latest})
+    btc_price = get_btc_price()
+    if list_format_latest and btc_price:
+        return render(request=request, template_name="index.html", context={'list_format_latest': list_format_latest, 'btc':btc_price})
     return render(request=request, template_name="index.html", context={'list_format_latest': None})
 
 
