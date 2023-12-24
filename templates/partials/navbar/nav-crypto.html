@@ -63,13 +63,16 @@
                         <li><a href="{% url 'faqs' %}" class="sub-menu-item">FAQs </a></li>
                         <li><a href="{% url 'whitepapers' %}" class="sub-menu-item">Whitepaper </a></li>
                         <li><a href="{% url 'blog' %}" class="sub-menu-item">Blog</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'ask' %}" class="sub-menu-item">Ask</a></li>
+                        {% endif %}
                     </ul>
                 </li>
                 {% if user.is_authenticated %}
                 <li>
                     <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
-                        <button type="submit" class="sub-menu-item" class="btn btn-dark" style="margin-top:15px;">Sign Out</button>
+                        <button type="submit" class="sub-menu-item btn btn-dark" style="margin-top:15px;">Sign Out</button>
                     </form>
                 </li>
                 {% endif %}

@@ -4,7 +4,7 @@
 {% include  'partials/main.html' %}
 
 <head>
-    {% include 'partials/title-meta.html' %}
+    {% include 'partials/title-meta.html' with page_title="Đơn Giản Hoá Quá Trình Đầu Tư Crypto" page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
 
     <!-- Css -->
     <link href='{% static "assets/libs/tiny-slider/tiny-slider.css" %}' rel="stylesheet">
@@ -12,12 +12,7 @@
 
 </head>
 
-{% include 'partials/title-meta.html' with
-   page_title="Đơn Giản Hoá Quá Trình Đầu Tư Crypto"
-   page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn."
-   page_keywords="coin100, cach mua bitcoin, dau tu crypto"
-%}
-
+{% include 'partials/header/header.html' %}
 <!-- Hero Start -->
 <section class="bg-half-260 bg-light bg-animation-left crypto-home d-table w-100">
     <div class="container position-relative" style="z-index: 1;">
@@ -25,8 +20,10 @@
             <div class="col-lg-10">
                 <div class="title-heading text-center">
                     <img src="{% static 'assets/images/crypto/crypto.svg' %}" height="136" class="mover" alt="">
-                    <h1 class="heading text-primary text-shadow-title mt-4 mb-3">Đơn Giản Hoá Quá Trình Đầu Tư Crypto</h1>
-                    <p class="para-desc mx-auto text-muted">Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu và tham gia vào thị trường tiền điện tử một cách dễ dàng & an toàn.</p>
+                    <h1 class="heading text-primary text-shadow-title mt-4 mb-3">Đơn Giản Hoá Quá Trình Đầu Tư
+                        Crypto</h1>
+                    <p class="para-desc mx-auto text-muted">Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu và
+                        tham gia vào thị trường tiền điện tử một cách dễ dàng & an toàn.</p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -70,7 +67,8 @@
                         <tr>
                             <th class="p-3">
                                 <div class="align-items-center">
-                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{item.id}}.png" alt="Crypto Symbol" class="me-3" height="32">
+                                    <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/{{item.id}}.png"
+                                         alt="Crypto Symbol" class="me-3" height="32">
                                     <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span class="text-muted">{{item.symbol}}</span>
                                     </p>
                                 </div>
@@ -102,7 +100,8 @@
             <div class="col-12 text-center">
                 <div class="section-title mb-4 pb-2">
                     <h4 class="title mb-4">Cơ Bản về Tiền Điện Tử</h4>
-                    <p class="text-muted para-desc mb-0 mx-auto">Trang bị những kiến thức, khái niệm về<span class="text-primary fw-bold"> Blockchain và Tiền Điện Tử </span>
+                    <p class="text-muted para-desc mb-0 mx-auto">Trang bị những kiến thức, khái niệm về<span
+                            class="text-primary fw-bold"> Blockchain và Tiền Điện Tử </span>
                         trước khi quyết định tham gia đầu tư vào thị trường Crypto.</p>
                 </div>
             </div><!--end col-->
@@ -179,7 +178,7 @@
                 <div class="section-title mb-4 pb-2">
                     <h4 class="title mb-4">Chọn Và Mua Tiền Điện Tử</h4>
                     <p class="text-muted para-desc mb-0 mx-auto">Hướng dẫn lựa chọn <span class="text-primary fw-bold">tiền điện tử</span>
-                         phù hợp với mục đích của bạn & từng bước thực hiện giao dịch đầu tiên.</p>
+                        phù hợp với mục đích của bạn & từng bước thực hiện giao dịch đầu tiên.</p>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
@@ -197,7 +196,8 @@
 
                     <div class="card-body p-0 mt-4">
                         <h5>Tạo Ví Tiền Điện Tử</h5>
-                        <p class="text-muted mb-0">Tạo ví tiền điện tử một cách an toàn để thực hiện giao dịch đầu tiên.</p>
+                        <p class="text-muted mb-0">Tạo ví tiền điện tử một cách an toàn để thực hiện giao dịch đầu
+                            tiên.</p>
                         <div class="mt-2">
                             <a href="javascript:void(0)" class="read-more">Xem thêm
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -317,8 +317,10 @@
                 <div class="ms-lg-4">
                     <div class="section-title mb-4 pb-2">
                         <h4 class="title mb-4">Câu Hỏi Thường Gặp</h4>
-                        <p class="text-muted para-desc mb-0">Nhớ rằng, thị trường tiền điện tử có thể  <span class="text-primary fw-bold">biến động mạnh</span>
-                            , và việc nắm vững kiến thức và kỹ năng quản lý rủi ro là rất quan trọng khi tham gia giao dịch.</p>
+                        <p class="text-muted para-desc mb-0">Nhớ rằng, thị trường tiền điện tử có thể <span
+                                class="text-primary fw-bold">biến động mạnh</span>
+                            , và việc nắm vững kiến thức và kỹ năng quản lý rủi ro là rất quan trọng khi tham gia giao
+                            dịch.</p>
                     </div>
 
                     <div class="accordion" id="accordionExample">
@@ -334,7 +336,8 @@
                                  aria-labelledby="headingOne"
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body text-muted">
-                                    Bạn có thể bắt đầu bằng cách nắm vững cơ bản về tiền điện tử và tạo một ví tiền điện tử.
+                                    Bạn có thể bắt đầu bằng cách nắm vững cơ bản về tiền điện tử và tạo một ví tiền điện
+                                    tử.
                                 </div>
                             </div>
                         </div>
@@ -380,7 +383,7 @@
                                         data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
                                         aria-controls="collapseFour">
-                                   Làm thế nào để xây dựng danh mục đầu tư?
+                                    Làm thế nào để xây dựng danh mục đầu tư?
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse border-0 collapse"

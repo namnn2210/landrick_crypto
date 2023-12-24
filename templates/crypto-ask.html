@@ -1,0 +1,108 @@
+{% include  'partials/main.html' %}
+{% load static %}
+
+
+<head>
+    {% include 'partials/title-meta.html' %}
+
+    <!-- Css -->
+    {% include 'partials/head-css-dark.html' %}
+
+</head>
+
+{% include 'partials/body.html' %}
+
+
+{% include 'partials/navbar/nav-crypto.html' %}
+
+<!-- Hero Start -->
+<section class="bg-half-170 d-table w-100 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Đặt câu hỏi
+                </button>
+            </div>
+            <!-- Modal -->
+            <div class="col-md-7">
+                <input type="text" class="form-control" placeholder="Tìm câu hỏi ở đây...">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn form-control text-center">Tìm kiếm</button>
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <ul class="list-unstyled">
+                {% for ask in list_ask %}
+                <li>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <strong>Question:</strong> {{ask.ask}}
+                        </div>
+                        {% if ask.answer %}
+                        <div class="card-body">
+                            <strong>Answer:</strong> {{ask.answer}}.
+                        </div>
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="questionModalLabel">Đặt câu hỏi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{% url 'add_ask' %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="question-input">Câu hỏi của bạn</label>
+                            <input name="ask" type="text" class="form-control" id="question-input"
+                                   placeholder="Nhập câu hỏi...">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary">Gửi câu hỏi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section><!--end section-->
+<!-- End -->
+
+<!-- Footer Start -->
+{% include  'partials/footer/footer-three.html' %}
+<!-- Footer End -->
+
+{% include  'partials/offcanvas-right.html' %}
+{% include  'partials/switcherbar.html' %}
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up"
+                                                                                 class="fea icon-sm icons align-middle"></i></a>
+<!-- Back to top -->
+
+<!-- javascript -->
+{% include  'partials/vendor-scripts.html' %}
+<!-- Main Js -->
+<script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
+<script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

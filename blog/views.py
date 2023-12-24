@@ -13,6 +13,6 @@ def blog(request):
     return render(request=request, template_name='crypto-blog.html', context={'page': page})
 
 
-def blog_detail(request, blog_id):
-    blog = get_object_or_404(BlogModel, pk=blog_id, status=1)
+def blog_detail(request, slug):
+    blog = get_object_or_404(BlogModel, slug=slug, status=1)
     return render(request, 'crypto-blog-detail.html', {'blog': blog})

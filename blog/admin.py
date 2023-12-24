@@ -9,7 +9,7 @@ from django import forms
 class BlogModelAdminForm(forms.ModelForm):
     class Meta:
         model = BlogModel  # Replace with your actual model name
-        fields = ['thumb','title', 'description', 'content', 'status']
+        fields = ['thumb', 'slug', 'title', 'description', 'content', 'status']
         widgets = {
             'content': TinyMCE(attrs={'cols': 80, 'rows': 30}),
         }
@@ -17,7 +17,7 @@ class BlogModelAdminForm(forms.ModelForm):
 
 @admin.register(BlogModel)
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'content', 'status', 'created_at', 'updated_at')
+    list_display = ('title', 'slug', 'description', 'content', 'status', 'created_at', 'updated_at')
     list_filter = ('status',)
     search_fields = ('title',)
 
