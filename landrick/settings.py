@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'authentication',
     'corsheaders',
     'django.contrib.humanize',
-    'blog'
+    'blog',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -129,8 +130,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
-
 mimetypes.add_type("text/javascript", ".js", True)
 
 CORS_ALLOWED_ORIGINS = [
@@ -144,3 +143,10 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     'http://103.241.43.107:8000',
 ]
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 800,
+    'toolbar': 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat',
+    'plugins': 'advlist autolink lists link image charmap print preview anchor',
+}
