@@ -26,6 +26,7 @@
             </div>
         </div>
 
+        {% if not user.is_authenticated %}
         <!--Login button Start-->
         <ul class="buy-button list-inline mb-0">
             <li class="list-inline-item mb-0">
@@ -46,6 +47,7 @@
             </li>
         </ul>
         <!--Login button End-->
+        {% endif %}
 
         <div id="navigation">
             <!-- Navigation Menu-->
@@ -63,6 +65,15 @@
                         <li><a href="{% url 'blog' %}" class="sub-menu-item">Blog</a></li>
                     </ul>
                 </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-dark" style="margin-top:15px;">Sign Out</button>
+                    </form>
+                </li>
+                {% endif %}
+
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div><!--end container-->

@@ -15,14 +15,15 @@
                 <div class="card border-0 mt-4" style="z-index: 1">
                     <div class="card-body p-0">
                         <h4 class="card-title text-center">Login</h4>  
-                        <form class="login-form mt-4">
+                        <form method="post" action="{% url 'login' %}" class="login-form mt-4">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label class="form-label">Your Email <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                            <input type="email" class="form-control ps-5" placeholder="Email" name="email" required="">
+                                            <input  type="email" class="form-control ps-5" placeholder="Email" name="email" required="true">
                                         </div>
                                     </div>
                                 </div><!--end col-->
@@ -32,7 +33,7 @@
                                         <label class="form-label">Password <span class="text-danger">*</span></label>
                                         <div class="form-icon position-relative">
                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                            <input type="password" class="form-control ps-5" placeholder="Password" required="">
+                                            <input type="password" class="form-control ps-5" placeholder="Password" required="true">
                                         </div>
                                     </div>
                                 </div><!--end col-->

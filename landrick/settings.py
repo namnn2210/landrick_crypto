@@ -150,3 +150,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'toolbar': 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat',
     'plugins': 'advlist autolink lists link image charmap print preview anchor',
 }
+
+LOGOUT_REDIRECT_URL = '/'

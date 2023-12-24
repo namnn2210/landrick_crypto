@@ -24,17 +24,18 @@
         <div class="row">
             <div class="col-12">
                 <div class="card form-signin p-4 rounded shadow">
-                    <form>
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
                         <a href="{% url 'index' %}"><img src='{% static "assets/images/logo-icon.png" %}'
                                                   class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
                         <h5 class="mb-3 text-center">Please sign in</h5>
 
                         <div class="form-floating mb-2">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
 
