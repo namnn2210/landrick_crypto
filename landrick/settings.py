@@ -134,16 +134,16 @@ MEDIA_URL = '/media/'
 mimetypes.add_type("text/javascript", ".js", True)
 
 CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:7979',
-    "http://localhost:7979",
-    "http://103.241.43.107:7979",
+    # 'http://127.0.0.1:7979',
+    # "http://localhost:7979",
+    # "http://103.241.43.107:7979",
     'https://coin100.vn'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:7979',
-    "http://localhost:7979",
-    'http://103.241.43.107:7979',
+    # 'http://127.0.0.1:7979',
+    # "http://localhost:7979",
+    # 'http://103.241.43.107:7979',
     'https://coin100.vn'
 ]
 
