@@ -26,27 +26,29 @@
             </div>
             {% endif %}
             <!-- Modal -->
-<!--            <div class="col-md-7">-->
-<!--                <input type="text" class="form-control" placeholder="Tìm câu hỏi ở đây...">-->
-<!--            </div>-->
-<!--            <div class="col-md-3">-->
-<!--                <button type="submit" class="btn form-control text-center">Tìm kiếm</button>-->
-<!--            </div>-->
+            <!--            <div class="col-md-7">-->
+            <!--                <input type="text" class="form-control" placeholder="Tìm câu hỏi ở đây...">-->
+            <!--            </div>-->
+            <!--            <div class="col-md-3">-->
+            <!--                <button type="submit" class="btn form-control text-center">Tìm kiếm</button>-->
+            <!--            </div>-->
         </div>
         <div class="row" style="margin-top:20px;">
             <ul class="list-unstyled">
                 {% for ask in list_ask %}
                 <li>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <strong>Question:</strong> {{ask.ask}}
+                    <a href="{% url 'ask_detail' ask.id%}">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <strong>HỎI:</strong> {{ask.ask}}
+                            </div>
+                            {% if ask.answer %}
+                            <div class="card-body">
+                                <strong>ĐÁP:</strong> {{ask.answer}}
+                            </div>
+                            {% endif %}
                         </div>
-                        {% if ask.answer %}
-                        <div class="card-body">
-                            <strong>Answer:</strong> {{ask.answer}}.
-                        </div>
-                        {% endif %}
-                    </div>
+                    </a>
                 </li>
                 {% endfor %}
             </ul>

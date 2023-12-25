@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import AskModel
 
 
@@ -14,3 +14,8 @@ def add_ask(request):
         ask_obj = AskModel(user=request.user, ask=ask_input)
         ask_obj.save()
         return redirect('ask')
+
+
+def ask_detail(request, ask_id):
+    ask = get_object_or_404(AskModel, pk=ask_id)
+    return render(request=request, template_name='crypto-ask-detail.html', context={'ask': ask})

@@ -1,0 +1,54 @@
+{% include  'partials/main.html' %}
+{% load static %}
+
+
+<head>
+    {% include 'partials/title-meta.html' with page_title=ask.ask %}
+
+    <!-- Css -->
+    {% include 'partials/head-css-dark.html' %}
+
+</head>
+
+{% include 'partials/body.html' %}
+
+
+{% include 'partials/navbar/nav-crypto.html' %}
+
+<!-- Hero Start -->
+<section class="bg-half-170 d-table w-100 bg-light">
+    <div class="container">
+        <div class="card mb-3">
+            <div class="card-body">
+                <strong>Hỏi:</strong> {{ask.ask}}
+            </div>
+            <div class="card-body">
+                {{ask.content|safe}}
+            </div>
+        </div>
+    </div><!--end container-->
+</section><!--end section-->
+<!-- End -->
+
+<!-- Footer Start -->
+{% include  'partials/footer/footer-three.html' %}
+<!-- Footer End -->
+
+{% include  'partials/offcanvas-right.html' %}
+{% include  'partials/switcherbar.html' %}
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up"
+                                                                                 class="fea icon-sm icons align-middle"></i></a>
+<!-- Back to top -->
+
+<!-- javascript -->
+{% include  'partials/vendor-scripts.html' %}
+<!-- Main Js -->
+<script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
+<script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+
+</body>
+
+</html>
