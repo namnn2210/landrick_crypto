@@ -44,21 +44,23 @@
             </div><!--end col-->
         </div><!--end row-->
 
+
         <div class="row">
+            {% for item in list_change%}
             <div class="col-lg-3 col-md-6">
                 <div class="card border-0 p-4 rounded shadow position-relative">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <img src='{% static "assets/images/crypto/bitcoin.png" %}'
+                        <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/{{item.id}}.png'
                              class="avatar avatar-coin rounded-pill p-1 bg-success" alt="">
-                        <span class="text-muted">BTC</span>
+                        <span class="text-muted">{{item.symbol}}</span>
                     </div>
 
-                    <h6>Bitcoin</h6>
+                    <h6>{{item.name}}</h6>
 
                     <div class="d-flex justify-content-between align-items-center mt-2">
-                        <small class="text-success">+15.55%</small>
-                        <small class="text-success">+$ 155</small>
-                        <small>$ 41245</small>
+                        <small class="text-success">{{item.percent_change_24h|floatformat:2|intcomma}}%</small>
+<!--                        <small class="text-success">+$ 155</small>-->
+                        <small>$ {{item.price|floatformat:2|intcomma}}</small>
                     </div>
 
                     <div class="crypto-chart">
@@ -68,79 +70,9 @@
                     </div>
                 </div>
             </div><!--end slide-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                <div class="card border-0 p-4 rounded shadow position-relative">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <img src='{% static "assets/images/crypto/ethereum.png" %}'
-                             class="avatar avatar-coin rounded-pill p-1 bg-danger" alt="">
-                        <span class="text-muted">ETS</span>
-                    </div>
-
-                    <h6>Ethereum</h6>
-
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <small class="text-danger">-25.01%</small>
-                        <small class="text-danger">-$ 524</small>
-                        <small>$ 1458</small>
-                    </div>
-
-                    <div class="crypto-chart">
-                        <div>
-                            <div id="chart-2"></div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end slide-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2 mt-lg-0 pt-lg-0">
-                <div class="card border-0 p-4 rounded shadow position-relative">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <img src='{% static "assets/images/crypto/monero.png" %}'
-                             class="avatar avatar-coin rounded-pill p-1 bg-success" alt="">
-                        <span class="text-muted">XMR</span>
-                    </div>
-
-                    <h6>Monero</h6>
-
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <small class="text-success">+3.08%</small>
-                        <small class="text-success">+$ 58</small>
-                        <small>$ 448</small>
-                    </div>
-
-                    <div class="crypto-chart">
-                        <div>
-                            <div id="chart-3"></div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end slide-->
-
-            <div class="col-lg-3 col-md-6 mt-4 pt-2 mt-lg-0 pt-lg-0">
-                <div class="card border-0 p-4 rounded shadow position-relative">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <img src='{% static "assets/images/crypto/litecoin.png" %}'
-                             class="avatar avatar-coin rounded-pill p-1 bg-danger" alt="">
-                        <span class="text-muted">LTC</span>
-                    </div>
-
-                    <h6>Litecoin</h6>
-
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <small class="text-danger">-5.05%</small>
-                        <small class="text-danger">-$ 48</small>
-                        <small>$ 478</small>
-                    </div>
-
-                    <div class="crypto-chart">
-                        <div>
-                            <div id="chart-4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--end col-->
+            {% endfor %}
         </div><!--end row-->
+
 
         <div class="row justify-content-center">
             <div class="col-12 mt-4 pt-2">
