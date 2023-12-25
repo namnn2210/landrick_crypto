@@ -52,14 +52,15 @@
         <div id="navigation">
             <!-- Navigation Menu-->
             <ul class="navigation-menu nav-light nav-right">
-                <li><a href='{% url "index" %}' class="sub-menu-item" style="padding-left:0px">Home</a></li>
-                <li><a href="{% url 'about' %}" class="sub-menu-item" style="padding-left:0px"> About Us</a></li>
-                <li><a href="{% url 'market' %}" class="sub-menu-item" style="padding-left:0px">Market</a></li>
+               <li><a href='{% url "index" %}' class="sub-menu-item" style="padding-left:0px">Trang Chủ</a></li>
+                <li><a href="{% url 'about' %}" class="sub-menu-item" style="padding-left:0px"> Về Crypto</a></li>
+                <li><a href="{% url 'market' %}" class="sub-menu-item" style="padding-left:0px">Thị Trường</a></li>
+                <li><a href="{% url 'services' %}" class="sub-menu-item" style="padding-left:0px">Giao Dịch</a></li>
                 <li><a href="{% url 'token' %}" class="sub-menu-item" style="padding-left:0px"> Token</a></li>
-                <li><a href="{% url 'ask' %}" class="sub-menu-item" style="padding-left:0px">Ask</a></li>
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)" style="padding-left:0px">Pages</a><span class="menu-arrow"></span>
                     <ul class="submenu">
+                        <li><a href="{% url 'ask' %}" class="sub-menu-item"> Hỏi Đáp</a></li>
                         <li><a href="{% url 'services' %}" class="sub-menu-item"> Features</a></li>
                         <li><a href="{% url 'faqs' %}" class="sub-menu-item">FAQs </a></li>
                         <li><a href="{% url 'whitepapers' %}" class="sub-menu-item">Whitepaper </a></li>
@@ -71,7 +72,7 @@
                 <li>
                     <form method="post" action="{% url 'logout' %}">
                         {% csrf_token %}
-                        <button type="submit" class="sub-menu-item btn btn-dark" style="margin-top:15px;">Sign Out</button>
+                        <button type="submit" class="sub-menu-item btn btn-dark" style="margin-top:15px;"Thoát</button>
                     </form>
                 </li>
                 {% endif %}
