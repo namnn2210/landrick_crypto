@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-wo(5rhsse0km-nj=e0)n2^fgqq4srwav+8ghfl)e3!%r5p++=_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '103.241.43.107']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '103.241.43.107', 'https://coin100.vn/', 'coin100.vn',
+                 'www.coin100.vn']
 
 # Application definition
 
@@ -136,13 +137,15 @@ mimetypes.add_type("text/javascript", ".js", True)
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     "http://localhost:8000",
-    "http://103.241.43.107:8000"
+    "http://103.241.43.107:8000",
+    'https://coin100.vn'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     "http://localhost:8000",
     'http://103.241.43.107:8000',
+    'https://coin100.vn'
 ]
 
 TINYMCE_DEFAULT_CONFIG = {

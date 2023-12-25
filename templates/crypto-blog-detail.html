@@ -3,7 +3,7 @@
 
 
 <head>
-    {% include 'partials/title-meta.html' %}
+    {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
 
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
@@ -21,7 +21,7 @@
         <div class="row mt-5">
             <div class="col-lg-8 col-md-7">
                 <div class="section-title me-lg-5">
-                    <h4 class="title fw-medium mb-4">{{blog.title}}</h4>
+                    <h1 class="title fw-medium mb-4">{{blog.title}}</h1>
                     <p class="text-muted mb-5">{{blog.description}}</p>
 
                     <img src="{{blog.thumb}}" class="img-fluid rounded shadow" alt="">
