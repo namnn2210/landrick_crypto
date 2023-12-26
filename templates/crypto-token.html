@@ -2,7 +2,7 @@
 {% load static %}
 
 <head>
-    {% include 'partials/title-meta.html' %}
+     {% include 'partials/title-meta.html' with page_title="Token được quảng cáo" %}
 
     <!-- Css -->
     <link href='{% static "assets/libs/tiny-slider/tiny-slider.css" %}' rel="stylesheet">
@@ -25,15 +25,14 @@
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-5 col-12">
                 <div class="title-heading">
-                    <span class="badge bg-soft-success rounded-md">Sale tokens</span>
-                    <h4 class="display-5 fw-bold text-white title-dark mt-3 mb-4">The token sale is live!</h4>
-                    <p class="text-white-50 para-desc mx-auto mb-0">Launch your campaign and benefit from our expertise
-                        on designing and managing conversion centered bootstrap v5 html page.</p>
+                    <span class="badge bg-soft-success rounded-md">Quảng cáo</span>
+                    <h4 class="display-5 fw-bold text-white title-dark mt-3 mb-4">Token đăng ký</h4>
+                    <p class="text-white-50 para-desc mx-auto mb-0">Token của bạn sẽ xuất hiện ở đây, sau khi Coin100 kiểm duyệt.</p>
                     <div class="mt-4">
                         <a href="#!" data-type="youtube" data-id="yba7hPeTSjk"
                            class="btn btn-icon btn-pills btn-primary m-1 lightbox"><i data-feather="video"
                                                                                       class="icons"></i></a><small
-                            class="fw-medium text-white-50 align-middle ms-1">Watch Now</small>
+                            class="fw-medium text-white-50 align-middle ms-1">Liên hệ</small>
                     </div>
                 </div>
             </div><!--end col-->
@@ -41,23 +40,23 @@
             <div class="col-lg-5 offset-lg-1 col-md-7 col-12 mt-4 pt-2">
                 <div class="card border-0 shadow rounded p-4 bg-light overflow-hidden ms-lg-4">
                     <img src='{% static "assets/images/logo-icon.png" %}' class="avatar avatar-md-md d-block mx-auto" alt="">
-                    <h5 class="text-center mt-3">Landrick Token Sale</h5>
+                    <h5 class="text-center mt-3">Coin100</h5>
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <div id="token-sale">
                                 <ul class="count-down list-unstyled m-0">
-                                    <li id="days" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
-                                    <li id="hours" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
-                                    <li id="mins" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
-                                    <li id="secs" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
-                                    <li id="end" class="h1"></li>
+                                    <li id="Ngày" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
+                                    <li id="Giờ" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
+                                    <li id="Phút" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
+                                    <li id="Giây" class="count-number fw-medium mb-0 list-inline-item px-3"></li>
+                                    <li id="Kết thúc" class="h1"></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <p class="text-muted text-center">Token sale ends <span
-                            class="text-dark fw-medium">August 25th 2021</span></p>
+                    <p class="text-muted text-center">Sẽ kết thúc <span
+                            class="text-dark fw-medium">Ngày 25 tháng 8 2024</span></p>
 
                     <div class="progress-box mt-4">
                         <div class="progress rounded-md" style="height: 10px;">
@@ -87,7 +86,7 @@
                     </ul>
 
                     <div class="mt-4">
-                        <a href="javascript:void(0)" class="btn btn-primary w-100">Join Now</a>
+                        <a href="javascript:void(0)" class="btn btn-primary w-100">Đăng ký ngay</a>
                     </div>
                 </div>
             </div><!--end col-->
