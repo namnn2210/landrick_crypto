@@ -17,7 +17,7 @@ class BlogModelAdminForm(forms.ModelForm):
 
 @admin.register(BlogModel)
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'description', 'content', 'status', 'created_at', 'updated_at')
+    list_display = ('title', 'slug', 'description', 'status', 'created_at', 'updated_at')
     list_filter = ('status',)
     search_fields = ('title',)
 

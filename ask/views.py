@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import AskModel
 from django.contrib.auth.decorators import login_required
+from slugify import slugify
 
 # Create your views here.
 def ask(request):
