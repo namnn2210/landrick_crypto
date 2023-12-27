@@ -17,6 +17,6 @@ def add_ask(request):
         return redirect('ask')
 
 
-def ask_detail(request, ask_id):
-    ask = get_object_or_404(AskModel, pk=ask_id)
+def ask_detail(request, slug):
+    ask = get_object_or_404(AskModel, slug=slug, status=1)
     return render(request=request, template_name='crypto-ask-detail.html', context={'ask': ask})

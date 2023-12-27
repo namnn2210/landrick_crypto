@@ -35,7 +35,7 @@
             <ul class="list-unstyled">
                 {% for ask in list_ask %}
                 <li>
-                    <a href="{% url 'ask_detail' ask.id%}">
+                    <a href="{% url 'ask_detail' ask.slug%}">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <strong>HỎI:</strong> {{ask.ask}}
