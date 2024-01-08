@@ -1,18 +1,20 @@
 from django.contrib import admin
 from .models import BlogModel
-from tinymce.widgets import TinyMCE
-from django.db import models
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 
 
 # Register your models here.
 class BlogModelAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget)
+
     class Meta:
         model = BlogModel  # Replace with your actual model name
         fields = ['thumb', 'slug', 'title', 'description', 'content', 'status']
-        widgets = {
-            'content': TinyMCE(attrs={'cols': 80, 'rows': 30}),
-        }
+
+        # widgets = {
+        #     'content': TinyMCE(attrs={'cols': 80, 'rows': 30}),
+        # }
 
 
 @admin.register(BlogModel)

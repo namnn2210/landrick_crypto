@@ -1,16 +1,15 @@
 from django.contrib import admin
 from .models import AskModel
-from tinymce.widgets import TinyMCE
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 
 
 class AskModelAdminForm(forms.ModelForm):
+    ask = forms.CharField(widget=CKEditorUploadingWidget)
     class Meta:
         model = AskModel  # Replace with your actual model name
         fields = ['user', 'slug', 'ask', 'answer', 'content', 'status']
-        widgets = {
-            'content': TinyMCE(attrs={'cols': 80, 'rows': 30}),
-        }
+
 
 
 # Register your models here.

@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class BlogModel(models.Model):
@@ -7,7 +7,7 @@ class BlogModel(models.Model):
     title = models.TextField(null=False)
     slug = models.TextField(default='slug')
     description = models.TextField(null=False)
-    content = models.TextField(null=False)
+    content = RichTextField(null=False)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

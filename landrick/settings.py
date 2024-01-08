@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.humanize',
     'blog',
-    'tinymce',
-    'ask'
+    # 'tinymce',
+    'ask',
+    'ckeditor',
+    # 'ckeditor-uploader'
 ]
 
 MIDDLEWARE = [
@@ -156,3 +158,5 @@ TINYMCE_DEFAULT_CONFIG = {
 
 LOGOUT_REDIRECT_URL = '/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
