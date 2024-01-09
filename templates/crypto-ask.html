@@ -41,11 +41,11 @@
                     <a href="{% url 'ask_detail' ask.slug%}">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <strong>HỎI:</strong> {{ask.ask}}
+                                <strong>HỎI:</strong> {{ask.ask|safe}}
                             </div>
                             {% if ask.answer %}
                             <div class="card-body">
-                                <strong>ĐÁP:</strong> {{ask.answer}}
+                                <strong>ĐÁP:</strong> {{ask.answer|safe}}
                             </div>
                             {% endif %}
                         </div>

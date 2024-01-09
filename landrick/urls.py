@@ -25,7 +25,8 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('blog/', include('blog.urls')),
     path('ask/', include('ask.urls')),
-    path('ckeditor/',include('ckeditor_uploader.urls'))
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('admin/clearcache/', include('clearcache.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

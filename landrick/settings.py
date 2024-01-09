@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 'tinymce',
     'ask',
     'ckeditor',
+    'clearcache'
     # 'ckeditor-uploader'
 ]
 
@@ -160,3 +161,14 @@ LOGOUT_REDIRECT_URL = '/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+DEFAULT_CHARSET = 'UTF-8'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': 800,
+        'font_names': 'Arial/Arial, Helvetica, sans-serif',
+        'entities': 'false',
+    },
+}
