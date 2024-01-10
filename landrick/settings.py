@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.humanize',
     'blog',
-    # 'tinymce',
+    'tinymce',
     'ask',
     'ckeditor',
     'clearcache'
