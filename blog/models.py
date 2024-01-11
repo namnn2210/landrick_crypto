@@ -15,6 +15,9 @@ class BlogCategoryModel(models.Model):
     class Meta:
         db_table = 'blog_categories'
 
+    def __str__(self):
+        return self.name
+
 
 class BlogModel(models.Model):
     thumb = models.ImageField(null=True, default=None, upload_to='')
