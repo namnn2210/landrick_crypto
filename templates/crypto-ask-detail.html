@@ -26,6 +26,44 @@
                 {{ask.content|safe}}
             </div>
         </div>
+        <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
+            <table class="table mb-0 table-center">
+                <thead>
+                <tr>
+                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                        style="min-width: 250px;">Tên
+                    </th>
+                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                        style="width: 150px;">
+                        Điểm uy tín
+                    </th>
+                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
+                        style="width: 100px;">Giao dịch
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {%for item in list_format_exchanges %}
+                <tr>
+                    <th class="p-3">
+                        <div class="align-items-center">
+                            <img src="{{item.thumb}}"
+                                 alt="Crypto Symbol" class="me-3" height="32">
+                            <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
+                                    class="text-muted">{{item.symbol}}</span>
+                            </p>
+                        </div>
+                    </th>
+                    <td class="p-3">{{item.trust_score}}</td>
+                    <td class="p-3 text-end"><a
+                            href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                            class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table><!--end table-->
+        </div>
     </div><!--end container-->
 </section><!--end section-->
 <!-- End -->

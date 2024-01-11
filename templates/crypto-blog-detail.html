@@ -1,9 +1,11 @@
 {% include  'partials/main.html' %}
 {% load static %}
-
+{% load humanize %}
 
 <head>
-    {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
+    {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ
+    được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an
+    toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
 
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
@@ -32,36 +34,68 @@
 
             <div class="col-lg-4 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0">
                 <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
-                    <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto" alt="">
+                    <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto"
+                         alt="">
 
                     <h5 class="mt-4">Đăng ký để hoàn 100 USDT phí giao dịch!</h5>
 
                     <img src='{% static "assets/images/crypto/bills.svg" %}' class="img-fluid" alt="">
 
-                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank" class="btn btn-primary">Đăng Ký Ngay</a>
+                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
+                       class="btn btn-primary">Đăng Ký Ngay</a>
 
-                    <h6 class="text-muted mb-0 mt-3">Mua bán và giao dịch Bitcoin, Ethereum, BNB các đồng coin tiền năng khác...</h6>
+                    <h6 class="text-muted mb-0 mt-3">Mua bán và giao dịch Bitcoin, Ethereum, BNB các đồng coin tiền năng
+                        khác...</h6>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
     </div><!--end container-->
 
     <div class="container mt-100 mt-60">
-        <div class="row justify-content-center">
+        <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
                     <h4 class="title mb-4">Các loại tiền điện tử đang thịnh hành hiện nay</h4>
-                    <p class="para-desc mx-auto text-muted mb-0">Dưới đây là danh sách các loại tiền điện tử đang thịnh hành mà mọi người tìm kiếm trên CoinMarketCap.</p>
+                    <p class="para-desc mx-auto text-muted mb-0">Dưới đây là danh sách các loại tiền điện tử đang thịnh
+                        hành mà mọi người tìm kiếm trên CoinMarketCap.</p>
+                </div>
+                <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
+                    <table class="table mb-0 table-center">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="min-width: 250px;">Tên
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="width: 150px;">
+                                Giá
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
+                                style="width: 100px;">Giao dịch
+                            </th>
+                        </tr>
+                        </thead>
 
-                    <div class="subcribe-form mt-5">
-                        <form>
-                            <div class="mb-0">
-                                <input type="email" id="email2" name="email" class="rounded-pill border" required
-                                       placeholder="Enter your email address">
-                                <button type="submit" class="btn btn-pills btn-primary">Notify me</button>
-                            </div>
-                        </form>
-                    </div>
+                        <tbody>
+                        {%for item in list_format_latest %}
+                        <tr>
+                            <th class="p-3">
+                                <div class="align-items-center">
+                                    <img src="{{item.thumb}}"
+                                         alt="Crypto Symbol" class="me-3" height="32">
+                                    <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
+                                            class="text-muted">{{item.symbol}}</span>
+                                    </p>
+                                </div>
+                            </th>
+                            <td class="p-3">{{item.price}}</td>
+                            <td class="p-3 text-end"><a
+                                    href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                                    class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table><!--end table-->
                 </div>
             </div><!--end col-->
         </div><!--end row-->
