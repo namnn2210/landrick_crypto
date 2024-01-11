@@ -1,6 +1,6 @@
 {% include  'partials/main.html' %}
 {% load static %}
-
+{% load humanize %}
 
 <head>
     {% include 'partials/title-meta.html' with page_title=ask.ask %}
@@ -31,14 +31,19 @@
                 <thead>
                 <tr>
                     <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                        style="min-width: 250px;">Tên
+                        style="width: 150px;">Tên
+                    </th>
+                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                        style="width: 150px;">
+                        Xếp hạng
+                    </th>
+                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                        style="width: 150px;">
+                        Volume
                     </th>
                     <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
                         style="width: 150px;">
                         Điểm uy tín
-                    </th>
-                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
-                        style="width: 100px;">Giao dịch
                     </th>
                 </tr>
                 </thead>
@@ -53,12 +58,16 @@
                             <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
                                     class="text-muted">{{item.symbol}}</span>
                             </p>
+                            {% if item.name == 'Binance'%}
+                            <a
+                            href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                            class="btn btn-sm btn-primary" target="_blank">Đăng ký</a>
+                            {%endif%}
                         </div>
                     </th>
+                    <td class="p-3">{{item.trust_score_rank}}</td>
+                    <td class="p-3">${{item.trade_volume_24h_btc|floatformat:2|intcomma}}</td>
                     <td class="p-3">{{item.trust_score}}</td>
-                    <td class="p-3 text-end"><a
-                            href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
-                            class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
                 </tr>
                 {% endfor %}
                 </tbody>

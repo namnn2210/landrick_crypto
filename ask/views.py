@@ -45,6 +45,8 @@ def get_trending_exchanges():
         exchange_data = response.json()
         for item in exchange_data:
             list_format_exchanges.append(
-                {'name': item['name'], 'thumb': item['image'], 'trust_score': item['trust_score']})
+                {'name': item['name'], 'thumb': item['image'], 'trust_score': item['trust_score'],
+                 'trust_score_rank': item['trust_score_rank'],
+                 'trade_volume_24h_btc': item['trade_volume_24h_btc']})
         return list_format_exchanges
     return None
