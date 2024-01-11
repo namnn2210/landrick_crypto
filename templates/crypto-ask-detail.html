@@ -41,10 +41,6 @@
                         style="width: 150px;">
                         Volume
                     </th>
-                    <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                        style="width: 150px;">
-                        Điểm uy tín
-                    </th>
                 </tr>
                 </thead>
 
@@ -67,7 +63,6 @@
                     </th>
                     <td class="p-3">{{item.trust_score_rank}}</td>
                     <td class="p-3">${{item.trade_volume_24h_btc|floatformat:2|intcomma}}</td>
-                    <td class="p-3">{{item.trust_score}}</td>
                 </tr>
                 {% endfor %}
                 </tbody>
