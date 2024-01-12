@@ -3,6 +3,8 @@ from .models import BlogModel
 from django.core.paginator import Paginator
 import requests
 
+from django.db.models import Q
+
 
 # Create your views here.
 def blog(request):
@@ -22,7 +24,7 @@ def get_trending_latest():
     if response.status_code == 200:
         data = response.json()['coins']
         for item in data[:10]:
-            price = float(item['item']['data']['price'].replace('$', '').replace(',',''))
+            price = float(item['item']['data']['price'].replace('$', '').replace(',', ''))
             list_format_latest.append(
                 {'name': item['item']['name'], 'thumb': item['item']['thumb'], 'symbol': item['item']['symbol'],
                  'price': price})
@@ -32,5 +34,9 @@ def get_trending_latest():
 
 def blog_detail(request, slug):
     blog = get_object_or_404(BlogModel, slug=slug, status=1)
+    category = blog.category
+    list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:3]
+    print(list_related_blogs)
     list_trending_latest = get_trending_latest()
-    return render(request, 'crypto-blog-detail.html', {'blog': blog, 'list_format_latest': list_trending_latest})
+    return render(request, 'crypto-blog-detail.html',
+                  {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})

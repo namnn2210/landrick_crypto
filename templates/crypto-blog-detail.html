@@ -61,46 +61,68 @@
             </div><!--end col-->
             <div class="col-md-12">
                 <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
-                        <table class="table mb-0 table-center">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="width: 100px;">Tên
-                                </th>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="width: 50px;">
-                                    Giá
-                                </th>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
-                                    style="width: 100px;">Giao dịch
-                                </th>
-                            </tr>
-                            </thead>
+                    <table class="table mb-0 table-center">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="width: 100px;">Tên
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="width: 50px;">
+                                Giá
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
+                                style="width: 100px;">Giao dịch
+                            </th>
+                        </tr>
+                        </thead>
 
-                            <tbody>
-                            {%for item in list_format_latest %}
-                            <tr>
-                                <th class="p-3">
-                                    <div class="align-items-center">
-                                        <img src="{{item.thumb}}"
-                                             alt="Crypto Symbol" class="me-3" height="32">
-                                        <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
-                                                class="text-muted">{{item.symbol}}</span>
-                                        </p>
-                                    </div>
-                                </th>
-                                <td class="p-3">${{item.price|floatformat:2|intcomma}}</td>
-                                <td class="p-3 text-end"><a
-                                        href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
-                                        class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table><!--end table-->
-                    </div>
+                        <tbody>
+                        {%for item in list_format_latest %}
+                        <tr>
+                            <th class="p-3">
+                                <div class="align-items-center">
+                                    <img src="{{item.thumb}}"
+                                         alt="Crypto Symbol" class="me-3" height="32">
+                                    <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
+                                            class="text-muted">{{item.symbol}}</span>
+                                    </p>
+                                </div>
+                            </th>
+                            <td class="p-3">${{item.price|floatformat:2|intcomma}}</td>
+                            <td class="p-3 text-end"><a
+                                    href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                                    class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table><!--end table-->
+                </div>
             </div>
+
+
         </div><!--end row-->
     </div><!--end container-->
+    <div class="container" style="margin-top:50px">
+        <div class="row">
+            <h2 class="text-center">Bài viết liên quan </h2>
+            {% for blog in list_related_blogs%}
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="card blog blog-primary border-0 rounded shadow overflow-hidden">
+                    <img src="{{blog.thumb.url}}" class="img-fluid" alt="">
+
+                    <div class="card-body content">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <!--                            <span class="badge bg-soft-primary">ICO</span>-->
+                            <small class="text-muted">{{blog.created_at}}</small>
+                        </div>
+                        <a href="{% url 'blog_detail' blog.slug %}" class="title text-dark h5">{{blog.title}}</a>
+                    </div>
+                </div>
+            </div><!--end col-->
+            {% endfor %}
+        </div>
+    </div>
 </section><!--end section-->
 <!-- End -->
 
