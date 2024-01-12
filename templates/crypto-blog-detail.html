@@ -1,6 +1,6 @@
 {% include  'partials/main.html' %}
 {% load static %}
-
+{% load humanize %}
 
 <head>
     {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
@@ -65,10 +65,10 @@
                             <thead>
                             <tr>
                                 <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="min-width: 250px;">Tên
+                                    style="width: 100px;">Tên
                                 </th>
                                 <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="width: 150px;">
+                                    style="width: 50px;">
                                     Giá
                                 </th>
                                 <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
@@ -89,7 +89,7 @@
                                         </p>
                                     </div>
                                 </th>
-                                <td class="p-3">{{item.price}}</td>
+                                <td class="p-3">${{item.price|floatformat:2|intcomma}}</td>
                                 <td class="p-3 text-end"><a
                                         href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
                                         class="btn btn-sm btn-primary" target="_blank">Mua</a></td>

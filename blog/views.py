@@ -22,10 +22,10 @@ def get_trending_latest():
     if response.status_code == 200:
         data = response.json()['coins']
         for item in data[:10]:
-            print(item['item']['data']['price'])
+            price = float(item['item']['data']['price'].replace('$', '').replace(',',''))
             list_format_latest.append(
                 {'name': item['item']['name'], 'thumb': item['item']['thumb'], 'symbol': item['item']['symbol'],
-                 'price': item['item']['data']['price']})
+                 'price': price})
         return list_format_latest
     return None
 
