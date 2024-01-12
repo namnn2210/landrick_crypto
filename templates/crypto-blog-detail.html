@@ -3,7 +3,9 @@
 
 
 <head>
-    {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
+    {% include 'partials/title-meta.html' with page_title=blog.title page_description="Chào mừng đến với Coin100! Bạn sẽ
+    được học cách bắt đầu Mua, Bán Bitcoin và tham gia giao dịch trên thị trường tiền điện tử một cách dễ dàng & an
+    toàn." page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
 
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
@@ -56,48 +58,48 @@
                     <h4 class="title mb-4">Các loại tiền điện tử đang thịnh hành hiện nay</h4>
                     <p class="para-desc mx-auto text-muted mb-0">Dưới đây là danh sách các loại tiền điện tử đang thịnh
                         hành mà mọi người tìm kiếm trên CoinMarketCap.</p>
-
-
                 </div>
-                <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
-                        <table class="table mb-0 table-center">
-                            <thead>
-                            <tr>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="min-width: 250px;">Tên
-                                </th>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
-                                    style="width: 150px;">
-                                    Giá
-                                </th>
-                                <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
-                                    style="width: 100px;">Giao dịch
-                                </th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            {%for item in list_format_latest %}
-                            <tr>
-                                <th class="p-3">
-                                    <div class="align-items-center">
-                                        <img src="{{item.thumb}}"
-                                             alt="Crypto Symbol" class="me-3" height="32">
-                                        <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
-                                                class="text-muted">{{item.symbol}}</span>
-                                        </p>
-                                    </div>
-                                </th>
-                                <td class="p-3">{{item.price}}</td>
-                                <td class="p-3 text-end"><a
-                                        href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
-                                        class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table><!--end table-->
-                    </div>
             </div><!--end col-->
+            <div class="col-12">
+                <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
+                    <table class="table mb-0 table-center">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="min-width: 250px;">Tên
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3"
+                                style="width: 150px;">
+                                Giá
+                            </th>
+                            <th scope="col" class="fw-normal border-bottom text-muted py-4 px-3 text-end"
+                                style="width: 100px;">Giao dịch
+                            </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {%for item in list_format_latest %}
+                        <tr>
+                            <th class="p-3">
+                                <div class="align-items-center">
+                                    <img src="{{item.thumb}}"
+                                         alt="Crypto Symbol" class="me-3" height="32">
+                                    <p class="mb-0 d-inline fw-normal h6">{{item.name}} <span
+                                            class="text-muted">{{item.symbol}}</span>
+                                    </p>
+                                </div>
+                            </th>
+                            <td class="p-3">{{item.price}}</td>
+                            <td class="p-3 text-end"><a
+                                    href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                                    class="btn btn-sm btn-primary" target="_blank">Mua</a></td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table><!--end table-->
+                </div>
+            </div>
         </div><!--end row-->
     </div><!--end container-->
 </section><!--end section-->
