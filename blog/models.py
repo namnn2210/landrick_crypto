@@ -1,8 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
-
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+UserModel = get_user_model()
 
 
 class BlogCategoryModel(models.Model):
@@ -22,6 +24,7 @@ class BlogCategoryModel(models.Model):
 class BlogModel(models.Model):
     thumb = models.ImageField(null=True, default=None, upload_to='')
     title = models.TextField(null=False)
+    author = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True)
     slug = models.TextField(default='slug')
     description = models.TextField(null=False)
     content = RichTextField(null=False)
@@ -32,3 +35,8 @@ class BlogModel(models.Model):
 
     class Meta:
         db_table = 'blogs'
+
+    def save(self, *args, **kwargs):
+        if not self.author and hasattr(self, 'request') and hasattr(self.request, 'user'):
+            self.author = self.request.user
+        super().save(*args, **kwargs)
