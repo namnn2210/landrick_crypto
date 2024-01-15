@@ -38,5 +38,8 @@ class BlogModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.author and hasattr(self, 'request') and hasattr(self.request, 'user'):
-            self.author = self.request.user
+            user = self.request.user
+            if user.first_name and user.last_name:
+                author_name = f"{user.first_name} {user.last_name}"
+                self.author = author_name
         super().save(*args, **kwargs)
