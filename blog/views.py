@@ -8,7 +8,7 @@ from django.db.models import Q
 
 # Create your views here.
 def blog(request):
-    list_blogs = BlogModel.objects.filter(status=1)
+    list_blogs = BlogModel.objects.filter(status=1).order_by('-created_at')
     items_per_page = 10
     paginator = Paginator(list_blogs, items_per_page)
     page_number = request.GET.get('page')
