@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import render, get_object_or_404
 from .models import BlogModel
 from django.core.paginator import Paginator
@@ -24,7 +26,10 @@ def get_trending_latest():
     if response.status_code == 200:
         data = response.json()['coins']
         for item in data[:10]:
-            price = float(item['item']['data']['price'].replace('$', '').replace(',', ''))
+            price_regex = r'(?<=\$)[0-9,]+\.(?:[0-9]+|<sub title="[0-9]+\.[0-9]+">[0-9]+<\/sub>[0-9]+)'
+            price_str = item['item']['data']['price']
+            price_match = re.findall(price_regex, price_str)
+            price = float(price_match[0].replace(',', ''))
             list_format_latest.append(
                 {'name': item['item']['name'], 'thumb': item['item']['thumb'], 'symbol': item['item']['symbol'],
                  'price': price})
