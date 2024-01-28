@@ -1,0 +1,98 @@
+{% include  'partials/main.html' %}
+{% load static %}
+
+
+<head>
+    {% include 'partials/title-meta.html' with page_title="Blog chia sẽ kiến thức về Crypto" %}
+
+    <!-- Css -->
+    {% include 'partials/head-css-dark.html' %}
+
+</head>
+
+{% include 'partials/body.html' %}
+
+
+{% include 'partials/navbar/nav-crypto.html' %}
+
+<!-- Hero Start -->
+<section class="bg-half-170 bg-light d-table w-100"
+         style="background: url('{% static 'assets/images/shape02.png' %}') top left;">
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="pages-heading">
+                    <h4 class="title mb-0"> Danh mục hỏi đáp </h4>
+                </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+
+        <div class="text-center subcribe-form mt-4 pt-2">
+            <form>
+                <div class="form-icon position-relative">
+                    <i data-feather="search" class="fea icon-sm icons mt-1"></i>
+                    <input type="text" id="text" name="text" class="rounded-pill bg-white-50 form-control ps-5"
+                           placeholder="Tìm thông tin hỏi đáp">
+                </div>
+                <button type="submit" class="btn btn-pills btn-primary">Tìm kiếm</button>
+            </form><!--end form-->
+        </div>
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
+
+
+<!-- Start -->
+<section class="section bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h4 class="title mb-4">{{ask_category_obj.name}}</h4>
+                    <p class="para-desc mx-auto text-muted mb-0">{{ask_category_obj.description}}</p>
+                    <div class="row">
+                        {% for ask in ask_by_category%}
+                        <div class="col-lg-4 col-md-6 col-12 mt-4">
+                            <div class="card blog blog-primary border-0 rounded shadow overflow-hidden">
+                                <!--                                <img src="{{blog.thumb.url}}" class="img-fluid" alt="">-->
+
+                                <div class="card-body content">
+                                    <div class="d-flex justify-content-between align-items-center mb-3 ">
+                                        <!--                            <span class="badge bg-soft-primary">ICO</span>-->
+                                        <a href="{% url 'ask_detail' ask.slug%}" class="text-muted">{{ask.ask}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+<!-- End -->
+
+<!-- Footer Start -->
+{% include  'partials/footer/footer-three.html' %}
+<!-- Footer End -->
+
+{% include  'partials/offcanvas-right.html' %}
+{% include  'partials/switcherbar.html' %}
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up"
+                                                                                 class="fea icon-sm icons align-middle"></i></a>
+<!-- Back to top -->
+
+<!-- javascript -->
+{% include  'partials/vendor-scripts.html' %}
+<!-- Main Js -->
+<script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
+<script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+
+</body>
+
+</html>
