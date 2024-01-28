@@ -19,13 +19,115 @@
 <section class="bg-half-170 d-table w-100 bg-light">
     <div class="container">
         <h1 class="text-center" style="font-size:30px">Chào mừng bạn đến với cộng đồng Hỏi - Đáp về Crypto </h1>
-        <h2 class="text-center" style="font-size:20px">Nơi trao đổi tin tức, thông tin, hỏi đáp giữa các thành viên mới tham gia và những chuyên gia
+        <h2 class="text-center" style="font-size:20px">Nơi trao đổi tin tức, thông tin, hỏi đáp giữa các thành
+            viên mới tham gia và những chuyên gia
             nhiều kinh nghiệm từ Coin100</h2>
         <div class="row">
-            <div class="col-md-2">
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Đặt câu hỏi
-                </button>
+            <div class="text-center subcribe-form mt-4 pt-2">
+                <form>
+                    <div class="form-icon position-relative">
+                        <i data-feather="search" class="fea icon-sm icons mt-1"></i>
+                        <input type="text" id="text" name="text" class="rounded-pill bg-white-50 form-control ps-5"
+                               placeholder="Tìm thông tin hỏi đáp">
+                    </div>
+                    <button type="submit" class="btn btn-pills btn-primary">Tìm kiếm</button>
+                </form><!--end form-->
             </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
+                        <div class="icons text-center mx-auto">
+                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
+                        </div>
+                        <div class="card-body p-0 mt-4">
+                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 1</a>
+                            <p class="text-muted mt-2">Số câu trả lời</p>
+                            <span class="star" id="star1">&#9733;</span>
+                            <span class="star" id="star2">&#9733;</span>
+                            <span class="star" id="star3">&#9733;</span>
+                            <span class="star" id="star4">&#9733;</span>
+                            <span class="star" id="star5">&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
+                        <div class="icons text-center mx-auto">
+                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
+                        </div>
+                        <div class="card-body p-0 mt-4">
+                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 2</a>
+                            <p class="text-muted mt-2">Số câu trả lời</p>
+                            <span class="star" id="star1">&#9733;</span>
+                            <span class="star" id="star2">&#9733;</span>
+                            <span class="star" id="star3">&#9733;</span>
+                            <span class="star" id="star4">&#9733;</span>
+                            <span class="star" id="star5">&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4 pt-2">
+                    <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
+                        <div class="icons text-center mx-auto">
+                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
+                        </div>
+                        <div class="card-body p-0 mt-4">
+                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 3</a>
+                            <p class="text-muted mt-2">Số câu trả lời</p>
+                            <span class="star" id="star1">&#9733;</span>
+                            <span class="star" id="star2">&#9733;</span>
+                            <span class="star" id="star3">&#9733;</span>
+                            <span class="star" id="star4">&#9733;</span>
+                            <span class="star" id="star5">&#9733;</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row justify-content-center">
+                        {% for category in list_asks_category %}
+                        <div class="col-md-6 mt-4 pt-2">
+                            <div class="feature feature-primary position-relative ps-4 py-4 pe-5 shadow rounded overflow-hidden">
+                                <div class="me-md-12">
+                                    <a href="{% url 'ask_category' category.slug%}" class="title h5 text-dark">{{category.name}}</a>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="mt-4 pt-2">
+                        <div class="feature feature-primary position-relative ps-4 py-4 pe-5 shadow rounded overflow-hidden">
+                            <div class="me-md-12">
+                                <a href="javascript:void(0)" class="title h5 text-dark text-uppercase">Hỏi đáp mới
+                                    nhất</a>
+                                <ul class="list-unstyled">
+                                    {% for ask in list_ask %}
+                                    <li>
+                                        <a href="{% url 'ask_detail' ask.slug%}">
+                                            <div class="card-body">
+                                                {{ask.ask|safe}}
+                                            </div>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div>
+            </div>
+
+            <!--            <div class="col-md-2">-->
+            <!--                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Đặt câu hỏi-->
+            <!--                </button>-->
+            <!--            </div>-->
             <!-- Modal -->
             <!--            <div class="col-md-7">-->
             <!--                <input type="text" class="form-control" placeholder="Tìm câu hỏi ở đây...">-->
@@ -34,54 +136,54 @@
             <!--                <button type="submit" class="btn form-control text-center">Tìm kiếm</button>-->
             <!--            </div>-->
         </div>
-        <div class="row" style="margin-top:20px;">
-            <ul class="list-unstyled">
-                {% for ask in list_ask %}
-                <li>
-                    <a href="{% url 'ask_detail' ask.slug%}">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <strong>HỎI:</strong> {{ask.ask|safe}}
-                            </div>
-                            {% if ask.answer %}
-                            <div class="card-body">
-                                <strong>ĐÁP:</strong> {{ask.answer|safe}}
-                            </div>
-                            {% endif %}
-                        </div>
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
+        <!--        <div class="row" style="margin-top:20px;">-->
+        <!--            <ul class="list-unstyled">-->
+        <!--                {% for ask in list_ask %}-->
+        <!--                <li>-->
+        <!--                    <a href="{% url 'ask_detail' ask.slug%}">-->
+        <!--                        <div class="card mb-3">-->
+        <!--                            <div class="card-body">-->
+        <!--                                <strong>HỎI:</strong> {{ask.ask|safe}}-->
+        <!--                            </div>-->
+        <!--                            {% if ask.answer %}-->
+        <!--                            <div class="card-body">-->
+        <!--                                <strong>ĐÁP:</strong> {{ask.answer|safe}}-->
+        <!--                            </div>-->
+        <!--                            {% endif %}-->
+        <!--                        </div>-->
+        <!--                    </a>-->
+        <!--                </li>-->
+        <!--                {% endfor %}-->
+        <!--            </ul>-->
+        <!--        </div>-->
     </div>
-    <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="questionModalLabel">Đặt câu hỏi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form method="post" action="{% url 'add_ask' %}">
-                    {% csrf_token %}
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="question-input">Câu hỏi của bạn</label>
-                            <input name="ask" type="text" class="form-control" id="question-input"
-                                   placeholder="Nhập câu hỏi...">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                        <button type="submit" class="btn btn-primary">Gửi câu hỏi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <!--    <div class="modal fade" id="questionModal" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel"-->
+    <!--         aria-hidden="true">-->
+    <!--        <div class="modal-dialog" role="document">-->
+    <!--            <div class="modal-content">-->
+    <!--                <div class="modal-header">-->
+    <!--                    <h5 class="modal-title" id="questionModalLabel">Đặt câu hỏi</h5>-->
+    <!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+    <!--                        <span aria-hidden="true">&times;</span>-->
+    <!--                    </button>-->
+    <!--                </div>-->
+    <!--                <form method="post" action="{% url 'add_ask' %}">-->
+    <!--                    {% csrf_token %}-->
+    <!--                    <div class="modal-body">-->
+    <!--                        <div class="form-group">-->
+    <!--                            <label for="question-input">Câu hỏi của bạn</label>-->
+    <!--                            <input name="ask" type="text" class="form-control" id="question-input"-->
+    <!--                                   placeholder="Nhập câu hỏi...">-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="modal-footer">-->
+    <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+    <!--                        <button type="submit" class="btn btn-primary">Gửi câu hỏi</button>-->
+    <!--                    </div>-->
+    <!--                </form>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </section><!--end section-->
 <!-- End -->
 
