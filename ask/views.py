@@ -15,9 +15,9 @@ def ask(request):
 def ask_category(request, slug):
     ask_category_obj = get_object_or_404(AskCategoryModel, slug=slug, status=1)
     ask_by_category = AskModel.objects.filter(category=ask_category_obj)
-    print(ask_by_category)
+    list_asks_category = AskCategoryModel.objects.filter(status=1)
     return render(request=request, template_name='crypto-ask-category.html',
-                  context={'ask_category_obj': ask_category_obj, 'ask_by_category': ask_by_category})
+                  context={'ask_category_obj': ask_category_obj, 'ask_by_category': ask_by_category, 'list_asks_category': list_asks_category})
 
 
 @login_required(login_url='login')

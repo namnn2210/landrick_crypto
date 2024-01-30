@@ -37,10 +37,26 @@
                 <button type="submit" class="btn btn-pills btn-primary">Tìm kiếm</button>
             </form><!--end form-->
         </div>
+
+        <div class="row justify-content-center">
+            {% for category in list_asks_category %}
+            <div class="col-md-6 mt-4 pt-2">
+                <div class="feature feature-primary position-relative ps-4 py-4 pe-5 shadow rounded overflow-hidden">
+                    <div class="me-md-12">
+                        <a href="{% url 'ask_category' category.slug%}" class="title h5 text-dark">{{category.name}}</a>
+                    </div>
+                </div>
+            </div><!--end col-->
+            {% endfor %}
+        </div>
     </div> <!--end container-->
 </section><!--end section-->
 <!-- Hero End -->
+<section>
+    <div class="container">
 
+    </div>
+</section>
 
 <!-- Start -->
 <section class="section bg-light">
