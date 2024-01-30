@@ -3,6 +3,7 @@ import re
 from django.shortcuts import render, get_object_or_404
 from .models import BlogModel
 from django.core.paginator import Paginator
+from django.db.models import Q
 import requests
 
 from django.db.models import Q
@@ -10,13 +11,23 @@ from django.db.models import Q
 
 # Create your views here.
 def blog(request):
-    list_blogs = BlogModel.objects.filter(status=1).order_by('-created_at')
+    if request.method == 'POST':
+        search_text = request.POST.get('blog').split(' ')
+        print('=================', search_text)
+        query = Q()
+        for word in search_text:
+            query |= Q(title__icontains=word)
+        query &= Q(status=1)
+        list_blogs = BlogModel.objects.filter(query).order_by('-created_at')
+    else:
+        list_blogs = BlogModel.objects.filter(status=1).order_by('-created_at')
     items_per_page = 10
     paginator = Paginator(list_blogs, items_per_page)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
 
     return render(request=request, template_name='crypto-blog.html', context={'page': page})
+
 
 
 def get_trending_latest():
