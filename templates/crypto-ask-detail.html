@@ -8,6 +8,22 @@
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
 
+    <style>
+        .star {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .star:hover, .star.active {
+            color: gold; /* Color for hovered and active stars */
+        }
+
+
+        .filled {
+            color: gold;
+        }
+    </style>
 </head>
 
 {% include 'partials/body.html' %}
@@ -22,9 +38,20 @@
             <div class="card-body">
                 <strong>Hỏi:</strong> {{ask.ask|safe}}
             </div>
+            {% if ask.answer %}
             <div class="card-body">
                 {{ask.content|safe}}
             </div>
+            <div class="star-rating card-body text-center" data-ask-id="{{ ask.id }}">
+                {% for i in "12345" %}
+                <!--                <span class="star" data-rating="{{ i }}">★</span>-->
+                <span class="star {% if i <= ask.rating %} filled {% endif %}" data-rating="{{ i }}"
+                      style='color: gold'>★</span>
+                {% endfor %}
+                <p>Current Rating: <span id="current-rating">{{ ask.rating }}  </span> / 5</p>
+            </div>
+
+            {% endif %}
         </div>
         <div class="table-responsive features-absolute shadow-md rounded-md" style="margin-top:50px">
             <table class="table mb-0 table-center">
@@ -56,8 +83,8 @@
                             </p>
                             {% if item.name == 'Binance'%}
                             <a
-                            href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
-                            class="btn btn-sm btn-primary" target="_blank">Đăng ký</a>
+                                    href="https://accounts.binance.com/vi/register?ref=B61KRIA2"
+                                    class="btn btn-sm btn-primary" target="_blank">Đăng ký</a>
                             {%endif%}
                         </div>
                     </th>
@@ -90,6 +117,39 @@
 <script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
 <script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
 <script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Add click event listener to stars
+        $('.star').click(function () {
+            const askId = $(this).parent().data('ask-id');
+            const rating = $(this).data('rating');
+
+            // Update the current rating display
+            $('#current-rating').text(rating);
+
+            // Send an AJAX request to Django view to save the rating
+            $.ajax({
+                type: 'POST',
+                url: '{% url "rate_ask" %}',
+                data: {
+                    'askId': askId,
+                    'rating': rating,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (data) {
+                    console.log('=============================', data)
+                    // Handle success response, if needed
+                    console.log('Rating saved successfully.');
+                },
+                error: function (error) {
+                    // Handle error response, if needed
+                    console.error('Error while saving rating:', error);
+                },
+            });
+        });
+    });
+</script>
 
 </body>
 

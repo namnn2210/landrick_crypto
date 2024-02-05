@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import AskModel, AskCategoryModel
+from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import requests
 
@@ -8,6 +10,7 @@ import requests
 def ask(request):
     list_asks = AskModel.objects.filter(status=1)
     list_asks_category = AskCategoryModel.objects.filter(status=1)
+
     return render(request=request, template_name='crypto-ask.html',
                   context={'list_ask': list_asks, 'list_asks_category': list_asks_category})
 
@@ -17,7 +20,8 @@ def ask_category(request, slug):
     ask_by_category = AskModel.objects.filter(category=ask_category_obj)
     list_asks_category = AskCategoryModel.objects.filter(status=1)
     return render(request=request, template_name='crypto-ask-category.html',
-                  context={'ask_category_obj': ask_category_obj, 'ask_by_category': ask_by_category, 'list_asks_category': list_asks_category})
+                  context={'ask_category_obj': ask_category_obj, 'ask_by_category': ask_by_category,
+                           'list_asks_category': list_asks_category})
 
 
 @login_required(login_url='login')
@@ -34,6 +38,22 @@ def ask_detail(request, slug):
     list_format_exchanges = get_trending_exchanges()
     return render(request=request, template_name='crypto-ask-detail.html',
                   context={'ask': ask, 'list_format_exchanges': list_format_exchanges})
+
+
+def rate_ask(request):
+    if request.method == 'POST':
+        ask_id = request.POST.get('askId')
+        rating = request.POST.get('rating')
+
+        print('****************', ask_id, rating)
+
+        ask = get_object_or_404(AskModel, pk=ask_id, status=1)
+        ask.rating = rating
+        ask.rating_count += 1
+        ask.save()
+        list_format_exchanges = get_trending_exchanges()
+        return render(request=request, template_name='crypto-ask-detail.html',
+                      context={'ask': ask, 'list_format_exchanges': list_format_exchanges})
 
 
 def get_trending_exchanges():

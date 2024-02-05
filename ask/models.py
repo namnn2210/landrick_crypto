@@ -22,6 +22,8 @@ class AskModel(models.Model):
     ask = models.TextField()
     answer = models.TextField(null=True, default=None)
     content = models.TextField(null=True, default=None)
+    rating = models.FloatField(default=0.0)
+    rating_count = models.IntegerField(default=0)
     status = models.BooleanField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
