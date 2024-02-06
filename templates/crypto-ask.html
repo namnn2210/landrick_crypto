@@ -88,8 +88,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6 mt-4">
+                <div class="col-md-12 mt-4">
                     <div class="row justify-content-center">
                         <!--                        {% for category in list_asks_category %}-->
                         <!--                        <div class="col-md-6 mt-4 pt-2">-->
@@ -110,7 +109,7 @@
                                             <div class="container">
                                                 <div class="row mt-5 justify-content-center">
                                                     <div class="col-12 text-center text-white">
-                                                        <h5 class="text-white title-dark mb-5">{{category.name}}</h5>
+                                                        <h5 class="text-white title-dark mb-5"> <a href="{% url 'ask_category' category.slug%}" class="title h5 text-dark mb-5">{{category.name}}</a></h5>
                                                     </div><!--end col-->
                                                 </div><!--end row-->
                                             </div>
