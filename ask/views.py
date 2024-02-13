@@ -36,8 +36,10 @@ def add_ask(request):
 def ask_detail(request, slug):
     ask = get_object_or_404(AskModel, slug=slug, status=1)
     list_format_exchanges = get_trending_exchanges()
+    list_asks_category = AskCategoryModel.objects.filter(status=1)
     return render(request=request, template_name='crypto-ask-detail.html',
-                  context={'ask': ask, 'list_format_exchanges': list_format_exchanges})
+                  context={'ask': ask, 'list_format_exchanges': list_format_exchanges,
+                           'list_asks_category': list_asks_category})
 
 
 def rate_ask(request):
