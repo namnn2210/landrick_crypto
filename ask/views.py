@@ -64,12 +64,12 @@ def rate_ask(request):
         ask = get_object_or_404(AskModel, pk=ask_id, status=1)
         try:
             admin_ask = AdminAskRatingModel.objects.get(user=ask.user, status=True)
-            admin_ask.rating += rating
+            admin_ask.rating += float(rating)
             admin_ask.rating_count += 1
         except AdminAskRatingModel.DoesNotExist:
             admin_ask = AdminAskRatingModel(user=ask.user, rating=rating, rating_count=1)
         admin_ask.save()
-        ask.rating += rating
+        ask.rating += float(rating)
         ask.rating_count += 1
         ask.save()
         list_format_exchanges = get_trending_exchanges()
