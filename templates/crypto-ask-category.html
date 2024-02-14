@@ -16,7 +16,7 @@
 {% include 'partials/navbar/nav-crypto.html' %}
 
 <!-- Hero Start -->
-<section class="bg-half-170 bg-light d-table w-100"
+<section class="bg-light d-table w-100"
          style="background: url('{% static 'assets/images/shape02.png' %}') top left;">
     <div class="container">
         <div class="row mt-5 justify-content-center">
@@ -38,16 +38,41 @@
             </form><!--end form-->
         </div>
 
-        <div class="row justify-content-center">
-            {% for category in list_asks_category %}
-            <div class="col-md-6 mt-4 pt-2">
-                <div class="feature feature-primary position-relative ps-4 py-4 pe-5 shadow rounded overflow-hidden">
-                    <div class="me-md-12">
-                        <a href="{% url 'ask_category' category.slug%}" class="title h5 text-dark">{{category.name}}</a>
+        <div class="row justify-content-center mt-4 mb-4">
+            <section class="home-slider position-relative">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-interval="false">
+                    <div class="carousel-inner">
+                        {% for category in list_asks_category %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-overlay"></div>
+                                <div class="container">
+                                    <div class="row mt-5 justify-content-center">
+                                        <div class="col-12 text-center text-white">
+                                            <h5 class="text-white title-dark mb-5"><a
+                                                    href="{% url 'ask_category' category.slug%}"
+                                                    class="title h5 text-dark mb-5">{{category.name}}</a>
+                                            </h5>
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+                                </div>
+                            </div><!--end slide-->
+                        </div>
+                        {% endfor %}
+
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button"
+                       data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval" role="button"
+                       data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
                 </div>
-            </div><!--end col-->
-            {% endfor %}
+            </section>
         </div>
     </div> <!--end container-->
 </section><!--end section-->
@@ -67,20 +92,35 @@
                     <h4 class="title mb-4">{{ask_category_obj.name}}</h4>
                     <p class="para-desc mx-auto text-muted mb-0">{{ask_category_obj.description}}</p>
                     <div class="row">
-                        {% for ask in ask_by_category%}
-                        <div class="col-lg-4 col-md-6 col-12 mt-4">
-                            <div class="card blog blog-primary border-0 rounded shadow overflow-hidden">
-                                <!--                                <img src="{{blog.thumb.url}}" class="img-fluid" alt="">-->
-
-                                <div class="card-body content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3 ">
-                                        <!--                            <span class="badge bg-soft-primary">ICO</span>-->
-                                        <a href="{% url 'ask_detail' ask.slug%}" class="text-muted">{{ask.ask}}</a>
+                        <div class="accordion mt-2" id="accordionExample">
+                            {% for ask in ask_by_category %}
+                            <div class="accordion-item rounded mt-2">
+                                <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                    <button class="accordion-button border-0 bg-light text-dark" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ forloop.counter }}"
+                                            aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                                        {{ ask.ask|safe }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ forloop.counter }}"
+                                     class="accordion-collapse border-0 collapse"
+                                     aria-labelledby="heading{{ forloop.counter }}"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body text-muted">
+                                        {{ ask.answer|safe }}
                                     </div>
+                                    <div class="accordion-body text-muted">
+                                        Đánh giá hiện tại: <span id="current-rating">{{ ask.rating }}  </span> / 5
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-dark mb-2" style="margin-left:3%"><a
+                                            href="{% url 'ask_detail' ask.slug%}">Chi tiết</a>
+                                    </button>
                                 </div>
+
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
 
                 </div>
