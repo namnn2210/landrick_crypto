@@ -16,7 +16,7 @@ class AskCategoryModel(models.Model):
 
 
 class AskModel(models.Model):
-    user = modelssh.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(AskCategoryModel, on_delete=models.CASCADE, null=True)
     slug = models.TextField(default='slug')
     ask = models.TextField()
