@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import AskModel, AskCategoryModel
+from .models import AskModel, AskCategoryModel, AdminAskRatingModel
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.db.models import F, ExpressionWrapper, FloatField
 import requests
 
 
@@ -10,9 +11,18 @@ import requests
 def ask(request):
     list_asks = AskModel.objects.filter(status=1)
     list_asks_category = AskCategoryModel.objects.filter(status=1)
-
+    queryset = AdminAskRatingModel.objects.filter(status=True).annotate(
+        rating_per_count=ExpressionWrapper(
+            F('rating') / F('rating_count'),
+            output_field=FloatField()
+        )
+    )
+    queryset = queryset.order_by('-rating_per_count')
+    top_3_users = queryset[:3]
+    for item in top_3_users:
+        print(item.rating_per_count)
     return render(request=request, template_name='crypto-ask.html',
-                  context={'list_ask': list_asks, 'list_asks_category': list_asks_category})
+                  context={'list_ask': list_asks, 'list_asks_category': list_asks_category, 'top_admin': top_3_users})
 
 
 def ask_category(request, slug):
@@ -52,7 +62,14 @@ def rate_ask(request):
         print('****************', ask_id, rating)
 
         ask = get_object_or_404(AskModel, pk=ask_id, status=1)
-        ask.rating = rating
+        try:
+            admin_ask = AdminAskRatingModel.objects.get(user=ask.user, status=True)
+            admin_ask.rating += rating
+            admin_ask.rating_count += 1
+        except AdminAskRatingModel.DoesNotExist:
+            admin_ask = AdminAskRatingModel(user=ask.user, rating=rating, rating_count=1)
+        admin_ask.save()
+        ask.rating += rating
         ask.rating_count += 1
         ask.save()
         list_format_exchanges = get_trending_exchanges()

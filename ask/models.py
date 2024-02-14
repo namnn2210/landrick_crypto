@@ -16,7 +16,7 @@ class AskCategoryModel(models.Model):
 
 
 class AskModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     category = models.ForeignKey(AskCategoryModel, on_delete=models.CASCADE, null=True)
     slug = models.TextField(default='slug')
     ask = models.TextField()
@@ -24,9 +24,16 @@ class AskModel(models.Model):
     content = models.TextField(null=True, default=None)
     rating = models.FloatField(default=0.0)
     rating_count = models.IntegerField(default=0)
-    pinned = models.BooleanField(default=0)
-    status = models.BooleanField(default=0)
+    pinned = models.BooleanField(default=False)
+    status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class AdminAskRatingModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.FloatField(default=0.0)
+    rating_count = models.IntegerField(default=0)
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 

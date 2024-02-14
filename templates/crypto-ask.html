@@ -1,6 +1,6 @@
 {% include  'partials/main.html' %}
 {% load static %}
-
+{% load humanize %}
 
 <head>
     {% include 'partials/title-meta.html' with page_title="Cộng đồng Hỏi - Đáp về Crypto" %}
@@ -35,55 +35,23 @@
             </div>
 
             <div class="row">
+                {% for admin in top_admin %}
                 <div class="col-lg-4 col-md-6 mt-4 pt-2">
                     <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
                         <div class="icons text-center mx-auto">
-                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
+                            <i class="uil uil-user rounded h3 mb-0"></i>
                         </div>
                         <div class="card-body p-0 mt-4">
-                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 1</a>
-                            <p class="text-muted mt-2">Số câu trả lời</p>
-                            <span class="star" id="star1">&#9733;</span>
-                            <span class="star" id="star2">&#9733;</span>
-                            <span class="star" id="star3">&#9733;</span>
-                            <span class="star" id="star4">&#9733;</span>
-                            <span class="star" id="star5">&#9733;</span>
+                            <a href="javascript:void(0)" class="title h5 text-dark">{{admin.user}}</a>
+                            {% if admin.rating_count != 0 %}
+                            <p class="text-muted mt-2">Điểm đánh giá: {{ admin.rating_per_count|floatformat:2|intcomma }}</p>
+                            {% else %}
+                            <p class="text-muted mt-2">Điểm đánh giá: N/A</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
-                        <div class="icons text-center mx-auto">
-                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
-                        </div>
-                        <div class="card-body p-0 mt-4">
-                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 2</a>
-                            <p class="text-muted mt-2">Số câu trả lời</p>
-                            <span class="star" id="star1">&#9733;</span>
-                            <span class="star" id="star2">&#9733;</span>
-                            <span class="star" id="star3">&#9733;</span>
-                            <span class="star" id="star4">&#9733;</span>
-                            <span class="star" id="star5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                    <div class="card border-0 features feature-primary feature-clean course-feature p-4 overflow-hidden shadow text-center">
-                        <div class="icons text-center mx-auto">
-                            <i class="uil uil-file-contract-dollar rounded h3 mb-0"></i>
-                        </div>
-                        <div class="card-body p-0 mt-4">
-                            <a href="javascript:void(0)" class="title h5 text-dark">Admin 3</a>
-                            <p class="text-muted mt-2">Số câu trả lời</p>
-                            <span class="star" id="star1">&#9733;</span>
-                            <span class="star" id="star2">&#9733;</span>
-                            <span class="star" id="star3">&#9733;</span>
-                            <span class="star" id="star4">&#9733;</span>
-                            <span class="star" id="star5">&#9733;</span>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
 
@@ -166,9 +134,11 @@
                                                 {{ ask.answer|safe }}
                                             </div>
                                             <div class="accordion-body text-muted">
-                                                Đánh giá hiện tại: <span id="current-rating">{{ ask.rating }}  </span> / 5
+                                                Đánh giá hiện tại: <span id="current-rating">{{ ask.rating }}  </span> /
+                                                5
                                             </div>
-                                            <button type="button" class="btn btn-sm btn-dark mb-2" style="margin-left:3%"><a
+                                            <button type="button" class="btn btn-sm btn-dark mb-2"
+                                                    style="margin-left:3%"><a
                                                     href="{% url 'ask_detail' ask.slug%}">Chi tiết</a>
                                             </button>
                                         </div>
