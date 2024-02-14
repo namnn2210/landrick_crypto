@@ -23,6 +23,7 @@ class AskAdmin(admin.ModelAdmin):
     search_fields = ('ask', 'answer',)
 
     form = AskModelAdminForm
+    ordering = ('-created_at',)
 
 
 @admin.register(AskCategoryModel)

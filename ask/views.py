@@ -17,7 +17,9 @@ def ask(request):
 
 def ask_category(request, slug):
     ask_category_obj = get_object_or_404(AskCategoryModel, slug=slug, status=1)
-    ask_by_category = AskModel.objects.filter(category=ask_category_obj)
+    pinned_asks = AskModel.objects.filter(category=ask_category_obj, pinned=True)
+    other_asks = AskModel.objects.filter(category=ask_category_obj, pinned=False)
+    ask_by_category = list(pinned_asks) + list(other_asks)
     list_asks_category = AskCategoryModel.objects.filter(status=1)
     return render(request=request, template_name='crypto-ask-category.html',
                   context={'ask_category_obj': ask_category_obj, 'ask_by_category': ask_by_category,
