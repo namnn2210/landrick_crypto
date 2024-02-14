@@ -36,6 +36,15 @@
 <section class="bg-half-170 d-table w-100 bg-light">
 
     <div class="container">
+        <div class="position-static text-center">
+            <nav aria-label="breadcrumb" class="d-inline-block">
+                <ul class="breadcrumb rounded shadow mb-0 px-4 py-2">
+                    <li class="breadcrumb-item"><a href='{% url "ask" %}'>HỎI ĐÁP</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'ask_category' ask.category.slug%}">{{ask.category}}</a></li>
+<!--                    <li class="breadcrumb-item active" aria-current="page">{{ask.ask}</li>-->
+                </ul>
+            </nav>
+        </div>
         <div class="col-md-2 mb-3">
             <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#questionModal">Đặt câu
                 hỏi
