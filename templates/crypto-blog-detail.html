@@ -3,7 +3,8 @@
 {% load humanize %}
 
 <head>
-    {% include 'partials/title-meta.html' with page_title=blog.title description=blog.description page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
+    {% include 'partials/title-meta.html' with page_title=blog.title description=blog.description
+    page_keywords="coin100, cach mua bitcoin, dau tu crypto" %}
 
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
@@ -28,24 +29,32 @@
                     <img src="{{blog.thumb}}" class="img-fluid rounded shadow" alt="">
 
                     {{blog.content|safe}}
-<!--                    <p class="text-muted"></p>-->
+                    <!--                    <p class="text-muted"></p>-->
                 </div>
             </div><!--end col-->
 
             <div class="col-lg-4 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0">
-                <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
-                    <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto"
-                         alt="">
+                <div class="container p-4 text-center rounded shadow border-0 sticky-bar">
+                    <div class="row">
+                        <div class="col-sm-3 col-lg-12 col-md-12">
+                            <img src='{% static "assets/images/logo-icon.png"  %}'
+                                 class="avatar avatar-small d-block mx-auto"
+                                 alt="">
+                            <h5 class="mt-4">Đăng ký để hoàn 100 USDT phí giao dịch!</h5>
+                        </div>
+                        <div class="col-sm-9 col-lg-12 col-md-12">
+                            <img src='{% static "assets/images/crypto/bills.svg" %}' class="img-fluid" alt="" style="position:relative;margin-top:-15%;">
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12">
+                            <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
+                               class="btn btn-primary">Đăng Ký Ngay</a>
+                            <h6 class="text-muted mb-0 mt-3">Mua bán và giao dịch Bitcoin, Ethereum, BNB các đồng coin
+                                tiền năng
+                                khác...</h6>
+                        </div>
+                    </div>
 
-                    <h5 class="mt-4">Đăng ký để hoàn 100 USDT phí giao dịch!</h5>
 
-                    <img src='{% static "assets/images/crypto/bills.svg" %}' class="img-fluid" alt="">
-
-                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
-                       class="btn btn-primary">Đăng Ký Ngay</a>
-
-                    <h6 class="text-muted mb-0 mt-3">Mua bán và giao dịch Bitcoin, Ethereum, BNB các đồng coin tiền năng
-                        khác...</h6>
                 </div>
             </div><!--end col-->
         </div><!--end row-->
