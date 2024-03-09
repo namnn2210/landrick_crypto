@@ -8,18 +8,15 @@
     <!-- Css -->
     {% include 'partials/head-css-dark.html' %}
     <style>
-
-        /* Media query for mobile screens */
-        /*@media (max-width: 768px) {*/
-        /*    .sticky-bar {*/
-        /*        position: fixed; !* Fixed positioning to keep it at the bottom *!*/
-        /*        bottom: 0; !* Align to the bottom of the viewport *!*/
-        /*        left: 0; !* Align to the left of the viewport *!*/
-        /*        z-index: 999; !* High z-index to ensure it's on top of other content *!*/
-        /*    }*/
-        /*}*/
+        @media (max-width: 768px) {
+            .sticky-div {
+                display: none;
+            }
+            .popup-div {
+                display:block;
+            }
+        }
     </style>
-
 </head>
 
 {% include 'partials/body.html' %}
@@ -31,7 +28,7 @@
 <section class="bg-half-170 d-table w-100 bg-light">
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-8 col-md-7">
                 <div class="section-title me-lg-5">
                     <p>Danh mục: {{blog.category}}</p>
                     <h1 class="title fw-medium mb-4">{{blog.title}}</h1>
@@ -44,6 +41,22 @@
                 </div>
             </div><!--end col-->
 
+            <div class="col-lg-4 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0 sticky-div">
+                <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
+                    <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto"
+                         alt="">
+
+                    <h5 class="mt-4">Đăng ký để hoàn 100 USDT phí giao dịch!</h5>
+
+                    <img src='{% static "assets/images/crypto/bills.svg" %}' class="img-fluid" alt="">
+
+                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
+                       class="btn btn-primary">Đăng Ký Ngay</a>
+
+                    <h6 class="text-muted mb-0 mt-3">Mua bán và giao dịch Bitcoin, Ethereum, BNB các đồng coin tiền năng
+                        khác...</h6>
+                </div>
+            </div><!--end col-->
         </div><!--end row-->
     </div><!--end container-->
 
@@ -122,10 +135,10 @@
         </div>
     </div>
 
-    <div class="container fixed-bottom">
+    <div class="container fixed-bottom popup-div" style="display:none;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0 ">
-                <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
+                <div class="card p-4 text-center rounded shadow border-0">
                     <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto"
                          alt="">
 
