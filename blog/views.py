@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render, get_object_or_404
-from .models import BlogModel
+from .models import BlogModel, BlogCategoryModel
 from django.core.paginator import Paginator
 from django.db.models import Q
 import requests
@@ -27,7 +27,6 @@ def blog(request):
     page = paginator.get_page(page_number)
 
     return render(request=request, template_name='crypto-blog.html', context={'page': page})
-
 
 
 def get_trending_latest():
@@ -56,3 +55,13 @@ def blog_detail(request, slug):
     list_trending_latest = get_trending_latest()
     return render(request, 'crypto-blog-detail.html',
                   {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})
+
+
+def blog_by_category(request, category_id):
+    category = get_object_or_404(BlogCategoryModel, pk=category_id)
+    list_blogs = BlogModel.objects.filter(category=category).filter(status=1)
+    items_per_page = 10
+    paginator = Paginator(list_blogs, items_per_page)
+    page_number = request.GET.get('page')
+    page = paginator.get_page(page_number)
+    return render(request=request, template_name='crypto-blog.html', context={'page': page})
