@@ -9,6 +9,7 @@ UserModel = get_user_model()
 
 class BlogCategoryModel(models.Model):
     name = models.TextField(null=False)
+    slug = models.TextField(default='slug')
     description = models.TextField(null=False)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

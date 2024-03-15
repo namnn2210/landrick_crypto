@@ -57,11 +57,11 @@ def blog_detail(request, slug):
                   {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})
 
 
-def blog_by_category(request, category_id):
-    category = get_object_or_404(BlogCategoryModel, pk=category_id)
+def blog_by_category(request, slug):
+    category = get_object_or_404(BlogCategoryModel, slug=slug)
     list_blogs = BlogModel.objects.filter(category=category).filter(status=1)
     items_per_page = 10
     paginator = Paginator(list_blogs, items_per_page)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-    return render(request=request, template_name='crypto-blog.html', context={'page': page})
+    return render(request=request, template_name='crypto-blog-category.html', context={'page': page,'category':category})
