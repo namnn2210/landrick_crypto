@@ -28,7 +28,7 @@ class WalletAdmin(admin.ModelAdmin):
 
 @admin.register(BlogCategoryModel)
 class BlogCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'status', 'created_at', 'updated_at')
+    list_display = ('name', 'description', 'slug', 'status', 'created_at', 'updated_at')
     list_filter = ('status',)
     search_fields = ('name',)
 
