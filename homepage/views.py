@@ -81,6 +81,7 @@ def get_btc_price():
 
 def index(request):
     list_format_latest = get_listing_latest()
+    print('+++++++++++++++', list_format_latest)
     btc_price = get_btc_price()
     if list_format_latest and btc_price:
         return render(request=request, template_name="index.html", context={'list_format_latest': list_format_latest, 'btc':btc_price})
