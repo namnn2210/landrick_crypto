@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import BlogModel, BlogCategoryModel
 from django.core.paginator import Paginator
 from django.db.models import Q
+from homepage.views import get_listing_latest
 import requests
 
 from django.db.models import Q
@@ -52,7 +53,7 @@ def blog_detail(request, slug):
     category = blog.category
     list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:3]
     print(list_related_blogs)
-    list_trending_latest = get_trending_latest()
+    list_trending_latest = get_listing_latest()
     return render(request, 'crypto-blog-detail.html',
                   {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})
 
