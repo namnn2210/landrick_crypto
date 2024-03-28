@@ -55,7 +55,7 @@ def blog_detail(request, slug):
     category = blog.category
     list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:3]
     print('aaaaaaaaaaaaaaaaaaaa', list_related_blogs)
-    list_trending_latest = get_trending_latest()
+    list_trending_latest = get_listing_latest()
     print('===============', list_trending_latest)
     return render(request, 'crypto-blog-detail.html',
                   {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})
