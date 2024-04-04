@@ -53,7 +53,7 @@ def get_trending_latest():
 def blog_detail(request, slug):
     blog = get_object_or_404(BlogModel, slug=slug, status=1)
     category = blog.category
-    list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:3]
+    list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:6]
     print('aaaaaaaaaaaaaaaaaaaa', list_related_blogs)
     list_trending_latest = get_listing_latest()
     print(blog.crypto)
