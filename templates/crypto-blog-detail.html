@@ -76,7 +76,7 @@
                     <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
                        class="btn btn-primary">Mua {{blog_crypto.name}}</a>
 
-                    <h6 class="text-muted mb-0 mt-3">Giá trực tiếp hôm nay của mỗi {{blog_crypto.name}} là $ {{blog_crypto.price|floatformat:2|intcomma}} ({{blog_crypto.symbol}} / USD) với vốn hóa thị trường hiện tại là $ {{blog_crypto.market_cap|floatformat:2|intcomma}} USD. Khối lượng giao dịch trong 24 giờ là $ {{blog_crypto.percent_change_24h|floatformat:2|intcomma}} USD. Giá {{blog_crypto.name}}/USD được cập nhật theo thời gian thực. {{blog_crypto.name}} là {{blog_crypto.volume_change_24h|floatformat:2|intcomma}}% trong 24 giờ qua</h6>
+                    <h6 class="text-muted mb-0 mt-3">Giá trực tiếp hôm nay của mỗi {{blog_crypto.name}} là $ {{blog_crypto.price|floatformat:2|intcomma}} ({{blog_crypto.symbol}} / USD) với vốn hóa thị trường hiện tại là $ {{item.market_cap|floatformat:2|intcomma}} USD. Khối lượng giao dịch trong 24 giờ là {{item.volume_change_24h|floatformat:2|intcomma}} %. Giá {{blog_crypto.name}}/USD được cập nhật theo thời gian thực. {{blog_crypto.name}} là {{item.percent_change_24h|floatformat:2|intcomma}}% trong 24 giờ qua</h6>
                 </div>
             </div><!--end col-->
             {% endif %}
