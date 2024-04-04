@@ -39,7 +39,7 @@ class BlogModel(models.Model):
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True)
     slug = models.TextField(default='slug')
     description = models.TextField(null=False)
-    crypto = models.ForeignKey(CryptoBlogModel, null=True, on_delete=models.CASCADE)
+    crypto = models.ForeignKey(CryptoBlogModel, null=True, on_delete=models.DO_NOTHING)
     content = RichTextField(null=False)
     category = models.ForeignKey(BlogCategoryModel, null=True, on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
