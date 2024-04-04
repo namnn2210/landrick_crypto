@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render, get_object_or_404
-from .models import BlogModel, BlogCategoryModel
+from .models import BlogModel, BlogCategoryModel, CryptoBlogModel
 from django.core.paginator import Paginator
 from django.db.models import Q
 from homepage.views import get_listing_latest
@@ -56,9 +56,16 @@ def blog_detail(request, slug):
     list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:3]
     print('aaaaaaaaaaaaaaaaaaaa', list_related_blogs)
     list_trending_latest = get_listing_latest()
-    print('===============', list_trending_latest)
+    print(blog.crypto)
+    blog_crypto = None
+    if blog.crypto is not None:
+        list_trending_latest_full = get_listing_latest(1000)
+        for item in list_trending_latest_full:
+            if item['symbol'] == blog.crypto.symbol:
+                blog_crypto = item
+    print('===========', blog_crypto)
     return render(request, 'crypto-blog-detail.html',
-                  {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs})
+                  {'blog': blog, 'list_format_latest': list_trending_latest, 'list_related_blogs': list_related_blogs,'blog_crypto':blog_crypto})
 
 
 def blog_by_category(request, slug):
@@ -68,4 +75,7 @@ def blog_by_category(request, slug):
     paginator = Paginator(list_blogs, items_per_page)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-    return render(request=request, template_name='crypto-blog-category.html', context={'page': page,'category':category})
+    return render(request=request, template_name='crypto-blog-category.html',
+                  context={'page': page, 'category': category})
+
+

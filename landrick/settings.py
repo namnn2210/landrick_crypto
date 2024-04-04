@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wo(5rhsse0km-nj=e0)n2^fgqq4srwav+8ghfl)e3!%r5p++=_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://coin100.vn/', 'coin100.vn', 'www.coin100.vn', '103.241.43.107']
 
@@ -229,3 +229,5 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240 # higher than the count of fields

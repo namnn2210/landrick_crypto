@@ -46,6 +46,7 @@
                 </div>
             </div><!--end col-->
 
+            {% if not blog_crypto %}
             <div class="col-lg-4 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0 sticky-div">
                 <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
                     <img src='{% static "assets/images/logo-icon.png"  %}' class="avatar avatar-small d-block mx-auto"
@@ -62,6 +63,23 @@
                         khác...</h6>
                 </div>
             </div><!--end col-->
+            {% else %}
+            <div class="col-lg-4 col-md-5 mt-4 pt-2 mt-sm-0 pt-sm-0 sticky-div">
+                <div class="card p-4 text-center rounded shadow border-0 sticky-bar">
+                    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/{{blog_crypto.id}}.png' class="avatar avatar-small d-block mx-auto"
+                         alt="">
+
+                    <h5 class="mt-4">Giá {{blog_crypto.name}}: ${{blog_crypto.price|floatformat:2|intcomma}}</h5>
+
+<!--                    <img src='{% static "assets/images/crypto/bills.svg" %}' class="img-fluid" alt="">-->
+
+                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
+                       class="btn btn-primary">Mua</a>
+
+                    <h6 class="text-muted mb-0 mt-3">Giá trực tiếp hôm nay của mỗi {{blog_crypto.name}} là $ {{blog_crypto.price|floatformat:2|intcomma}} ({{blog_crypto.symbol}} / USD) với vốn hóa thị trường hiện tại là $ {{item.market_cap|floatformat:2|intcomma}} USD. Khối lượng giao dịch trong 24 giờ là $ {{item.percent_change_24h|floatformat:2|intcomma}} USD. Giá {{blog_crypto.name}}/USD được cập nhật theo thời gian thực. {{blog_crypto.name}} là {{item.volume_change_24h|floatformat:2|intcomma}}% trong 24 giờ qua</h6>
+                </div>
+            </div><!--end col-->
+            {% endif %}
         </div><!--end row-->
     </div><!--end container-->
 
@@ -140,6 +158,7 @@
         </div>
     </div>
 
+    {% if not blog_crypto %}
     <div class="container fixed-bottom popup-div close-div">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0 close-div">
@@ -159,8 +178,28 @@
                 </div>
             </div><!--end col-->
         </div>
-
     </div>
+    {% else %}
+    <div class="container fixed-bottom popup-div close-div">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-4 pt-2 mt-sm-0 pt-sm-0 close-div">
+                <div class="card p-4 text-center rounded shadow border-0" id="close-div">
+                    <img src='https://s2.coinmarketcap.com/static/img/coins/64x64/{{blog_crypto.id}}.png' class="avatar avatar-small d-block mx-auto"
+                         alt="">
+
+                    <h5 class="mt-4">Giá {{blog_crypto.name}}: ${{blog_crypto.price|floatformat:2|intcomma}}</h5>
+
+                    <!--                    <img src='{% static "assets/images/crypto/bills.svg" %}' width="70px" class="img-fluid" alt="">-->
+
+                    <a href="https://accounts.binance.com/vi/register?ref=B61KRIA2" target="_blank"
+                       class="btn btn-primary">Mua</a>
+
+                    <h6 class="text-muted mb-0 mt-3">Giá trực tiếp hôm nay của mỗi {{blog_crypto.name}} là $ {{blog_crypto.price|floatformat:2|intcomma}} ({{blog_crypto.symbol}} / USD) với vốn hóa thị trường hiện tại là $ {{item.market_cap|floatformat:2|intcomma}} USD. Khối lượng giao dịch trong 24 giờ là $ {{item.percent_change_24h|floatformat:2|intcomma}} USD. Giá {{blog_crypto.name}}/USD được cập nhật theo thời gian thực. {{blog_crypto.name}} là {{item.volume_change_24h|floatformat:2|intcomma}}% trong 24 giờ qua</h6>
+                </div>
+            </div><!--end col-->
+        </div>
+    </div>
+    {% endif %}
 
 </section><!--end section-->
 <!-- End -->

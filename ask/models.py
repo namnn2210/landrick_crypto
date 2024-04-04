@@ -29,6 +29,10 @@ class AskModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Ask"
+        verbose_name_plural = "Asks"
+
 class AdminAskRatingModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.FloatField(default=0.0)

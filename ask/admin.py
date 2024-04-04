@@ -21,6 +21,7 @@ class AskAdmin(admin.ModelAdmin):
     list_display = ('user', 'slug', 'ask', 'category', 'answer', 'status','pinned', 'created_at', 'updated_at')
     list_filter = ('user', 'status', 'category', 'created_at','pinned',)
     search_fields = ('ask', 'answer',)
+    change_form_title = "Custom Edit Title"
 
     form = AskModelAdminForm
     ordering = ('-created_at',)
@@ -31,3 +32,5 @@ class AskCategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'description', 'status', 'created_at', 'updated_at')
     list_filter = ('name', 'status', 'created_at',)
     search_fields = ('name', 'description',)
+
+    change_form_title = "Custom Edit Title"
