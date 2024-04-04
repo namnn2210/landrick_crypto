@@ -29,7 +29,7 @@ class WalletAdmin(admin.ModelAdmin):
 @admin.register(CryptoBlogModel)
 class CryptoBlog(admin.ModelAdmin):
     list_display = ('name', 'symbol','status', 'created_at', 'updated_at')
-    list_filter = ('name', 'symbol',)
+    # list_filter = ('name', 'symbol',)
     search_fields = ('name', 'symbol',)
 
 
