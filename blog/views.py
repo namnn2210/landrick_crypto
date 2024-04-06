@@ -58,10 +58,11 @@ def blog_detail(request, slug):
     list_trending_latest = get_listing_latest()
     print(blog.crypto)
     blog_crypto = None
-    if blog.crypto is not None:
+    if blog.crypto_id is not None:
+        crypto = get_object_or_404(BlogModel, pk=blog.crypto_id)
         list_trending_latest_full = get_listing_latest(1000)
         for item in list_trending_latest_full:
-            if item['symbol'] == blog.crypto.symbol:
+            if item['symbol'] == crypto.symbol:
                 blog_crypto = item
     print('===========', blog_crypto)
     return render(request, 'crypto-blog-detail.html',

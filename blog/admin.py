@@ -10,7 +10,7 @@ class BlogModelAdminForm(forms.ModelForm):
 
     class Meta:
         model = BlogModel  # Replace with your actual model name
-        fields = ['thumb', 'slug', 'title', 'author', 'description','crypto', 'category', 'content', 'status']
+        fields = ['thumb', 'slug', 'title', 'author', 'description','crypto_id', 'category', 'content', 'status']
 
         # widgets = {
         #     'content': TinyMCE(attrs={'cols': 80, 'rows': 30}),
@@ -19,7 +19,7 @@ class BlogModelAdminForm(forms.ModelForm):
 
 @admin.register(BlogModel)
 class WalletAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'description', 'author', 'status', 'crypto', 'category', 'created_at', 'updated_at')
+    list_display = ('title', 'slug', 'description', 'author', 'status', 'crypto_id', 'category', 'created_at', 'updated_at')
     list_filter = ('status', 'category',)
     search_fields = ('title',)
 
@@ -28,7 +28,7 @@ class WalletAdmin(admin.ModelAdmin):
 
 @admin.register(CryptoBlogModel)
 class CryptoBlog(admin.ModelAdmin):
-    list_display = ('name', 'symbol','status', 'created_at', 'updated_at')
+    list_display = ('id','name', 'symbol','status', 'created_at', 'updated_at')
     # list_filter = ('name', 'symbol',)
     search_fields = ('name', 'symbol',)
 
