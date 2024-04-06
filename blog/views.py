@@ -56,7 +56,6 @@ def blog_detail(request, slug):
     list_related_blogs = BlogModel.objects.filter(category=category).exclude(slug=slug)[:6]
     print('aaaaaaaaaaaaaaaaaaaa', list_related_blogs)
     list_trending_latest = get_listing_latest()
-    print(blog.crypto)
     blog_crypto = None
     if blog.crypto_id is not None:
         crypto = get_object_or_404(BlogModel, pk=blog.crypto_id)
