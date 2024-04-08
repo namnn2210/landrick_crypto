@@ -61,7 +61,11 @@
                 </div>
                 <div class="card shadow rounded border-0 mt-4">
                     <div class="card-body">
+                        {% if comments|length != 0 %}
                         <h5 class="card-title mb-0">Bình luận :</h5>
+                        {% else %}
+                        <h5 class="card-title mb-0">Chưa có bình luận nào. Hãy nhập bình luận ở bên dưới</h5>
+                        {% endif %}
 
                         <ul class="media-list list-unstyled mb-0">
                             {% for comment in comments%}
