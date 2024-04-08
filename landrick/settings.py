@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'tinymce',
     'ask',
     'ckeditor',
-    'clearcache'
+    'clearcache',
+    'feed'
     # 'ckeditor-uploader'
 ]
 

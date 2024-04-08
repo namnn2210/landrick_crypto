@@ -56,7 +56,8 @@
                 <li><a href="{% url 'about' %}" class="sub-menu-item" style="padding-left:0px">Về Crypto</a></li>
                 <li><a href="{% url 'market' %}" class="sub-menu-item" style="padding-left:0px">Thị Trường</a></li>
                 <li><a href="{% url 'services' %}" class="sub-menu-item" style="padding-left:0px">Giao Dịch</a></li>
-                <li><a href="{% url 'token' %}" class="sub-menu-item" style="padding-left:0px"> Token</a></li>
+                {% comment %} <li><a href="{% url 'token' %}" class="sub-menu-item" style="padding-left:0px"> Token</a></li> {% endcomment %}
+                <li><a href="{% url 'feed' %}" class="sub-menu-item" style="padding-left:0px"> Feed</a></li>
                 <li><a href="{% url 'ask' %}" class="sub-menu-item">Hỏi đáp</a></li>
                 <li class="has-submenu parent-parent-menu-item">
                     <a href="javascript:void(0)" style="padding-left:0px">Hỗ Trợ</a><span class="menu-arrow"></span>

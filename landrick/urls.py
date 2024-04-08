@@ -25,6 +25,7 @@ urlpatterns = [
     path('authentication/', include('authentication.urls')),
     path('blog/', include('blog.urls')),
     path('ask/', include('ask.urls')),
+    path('feed/', include('feed.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/clearcache/', include('clearcache.urls')),
 ]
