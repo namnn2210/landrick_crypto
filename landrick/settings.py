@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'ask',
     'ckeditor',
     'clearcache',
-    'feed'
+    'feed',
+    'django_social_share'
     # 'ckeditor-uploader'
 ]
 
@@ -231,4 +232,4 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240 # higher than the count of fields
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240  # higher than the count of fields
