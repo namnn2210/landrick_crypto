@@ -20,7 +20,7 @@ def feed_detail(request, slug):
     domain = f"{parsed_url.scheme}://{parsed_url.netloc}"
     feed_obj = FeedModel.objects.get(slug=slug, status=1)
     feed_comments = FeedCommentModel.objects.filter(feed=feed_obj, status=1).order_by('-created_at')
-    if feed_obj.hashtags is not None or feed_obj.hashtags != '':
+    if feed_obj.hashtags is not None and feed_obj.hashtags != '':
         hashtags = feed_obj.hashtags.split(',')
     else:
         hashtags = None
