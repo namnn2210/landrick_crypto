@@ -76,9 +76,15 @@
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <div class="commentor-detail">
+                                            {% if comment.user %}
                                             <h6 class="mb-0"><a href="javascript:void(0)"
                                                                 class="text-dark media-heading">{{comment.user}}</a>
                                             </h6>
+                                            {% else %}
+                                            <h6 class="mb-0"><a href="javascript:void(0)"
+                                                                class="text-dark media-heading">Người dùng ẩn danh</a>
+                                            </h6>
+                                            {% endif %}
                                             <small class="text-muted">{{comment.created_at}}</small>
                                         </div>
                                     </div>
