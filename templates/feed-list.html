@@ -1,125 +1,131 @@
 {% include 'partials/main.html' %}
 {% load static %}
 
-    <head>
-        {% include 'partials/title-meta.html' with page_title="Tin tức mới nhất về Crypto" %}
+<head>
+    {% include 'partials/title-meta.html' with page_title="Tin tức mới nhất về Crypto" %}
 
-        
-        <!-- Css -->
-        <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
-        {% comment %} @@include("partials/head-css.html") {% endcomment %}
-        {% include 'partials/head-css-dark.html' %}
-    </head>
 
-    {% include 'partials/body.html' %}
-        
-        
-        
-        {% include 'partials/navbar/nav-crypto.html' %}
-        
-        <!-- Hero Start -->
-        <section class="bg-half-170 bg-light d-table w-100">
-            <div class="container">
-                <div class="row mt-5 justify-content-center">
-                    <div class="col-lg-12 text-center">
-                        <div class="pages-heading">
-                            <h4 class="title mb-0"> Theo dõi thị trường Crypto với những tin tức, phân tích & dự án được cập nhật mỗi ngày </h4>
-                        </div>
-                    </div>  <!--end col-->
-                </div><!--end row-->
-                
-                <div class="position-breadcrumb">
-                    <nav aria-label="breadcrumb" class="d-inline-block">
-                        <ul class="breadcrumb rounded shadow mb-0 px-4 py-2">
-                            <li class="breadcrumb-item"><a href="https://coin100.vn/">Coin100</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Feed</li>
-                        </ul>
-                    </nav>
+    <!-- Css -->
+    <link href="assets/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    {% comment %} @@include("partials/head-css.html") {% endcomment %}
+    {% include 'partials/head-css-dark.html' %}
+</head>
+
+{% include 'partials/body.html' %}
+
+
+{% include 'partials/navbar/nav-crypto.html' %}
+
+<!-- Hero Start -->
+<section class="bg-half-170 bg-light d-table w-100">
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="pages-heading">
+                    <h4 class="title mb-0"> Theo dõi thị trường Crypto với những tin tức, phân tích & dự án được cập
+                        nhật mỗi ngày </h4>
                 </div>
-            </div> <!--end container-->
-        </section><!--end section-->
-        <div class="position-relative">
-            <div class="shape overflow-hidden text-color-white">
-                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
-                </svg>
-            </div>
+            </div>  <!--end col-->
+        </div><!--end row-->
+
+        <div class="position-breadcrumb">
+            <nav aria-label="breadcrumb" class="d-inline-block">
+                <ul class="breadcrumb rounded shadow mb-0 px-4 py-2">
+                    <li class="breadcrumb-item"><a href="https://coin100.vn/">Coin100</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Feed</li>
+                </ul>
+            </nav>
         </div>
-        <!-- Hero End -->
-        
-        <!--Blog Lists Start-->
-        <section class="section">
-            <div class="container">
-                <div class="row">
-                    {% for feed in page%}
-                    <div class="col-lg-12 col-12 mb-4 pb-2">
-                        <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                            <div class="row align-items-center g-0">
-                                <div class="col-md-6">
-                                    <img src="{{feed.thumb.url}}" class="img-fluid" alt="">
-                                    <div class="overlay"></div>
-                                    <div class="author">
-                                        <small class="user d-block"><i class="uil uil-user"></i> {{feed.author}}</small>
-                                        <small class="date"><i class="uil uil-calendar-alt"></i> {{feed.created_at}}</small>
-                                    </div>
-                                </div><!--end col-->
+    </div> <!--end container-->
+</section><!--end section-->
+<div class="position-relative">
+    <div class="shape overflow-hidden text-color-white">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!-- Hero End -->
 
-                                <div class="col-md-6">
-                                    <div class="card-body content">
-                                        <h5><a href="{% url 'feed_detail' feed.slug %}" class="card-title title text-dark">{{feed.title}}</a></h5>
-                                        <p class="text-muted mb-0">{{feed.description}}</p>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <a href="{% url 'feed_detail' feed.slug %}" class="text-muted readmore">Đọc thêm <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div> <!--end row-->
-                        </div><!--end blog post-->
-                    {% endfor %}
-                    <!-- PAGINATION START -->
-                    <div class="col-12">
-                        <ul class="pagination justify-content-center mb-0">
-                            {% if page.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}"
-                                             aria-label="Previous">Prev</a></li>
-                    {% endif %}
+<!--Blog Lists Start-->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            {% for feed in page%}
+            <div class="col-lg-12 col-12 mb-4 pb-2">
+                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
+                    <div class="row align-items-center g-0">
+                        <div class="col-md-6">
+                            {% if feed.thumb %}
+                            <img src="{{feed.thumb.url}}" class="img-fluid" alt="">
+                            {% endif %}
+                            <div class="overlay"></div>
+                            <div class="author">
+                                <small class="user d-block"><i class="uil uil-user"></i> {{feed.author}}</small>
+                                <small class="date"><i class="uil uil-calendar-alt"></i> {{feed.created_at}}</small>
+                            </div>
+                        </div><!--end col-->
 
-                    {% for i in page.paginator.page_range %}
-                    <li class="page-item{% if page.number == i %} active{% endif %}"><a class="page-link"
-                                                                                        href="?page={{ i }}">{{i}}</a>
-                    </li>
-                    {% endfor %}
+                        <div class="col-md-6">
+                            <div class="card-body content">
+                                <h5><a href="{% url 'feed_detail' feed.slug %}" class="card-title title text-dark">{{feed.title}}</a>
+                                </h5>
+                                <p class="text-muted mb-0">{{feed.description}}</p>
+                                <div class="post-meta d-flex justify-content-between mt-3">
+                                    <a href="{% url 'feed_detail' feed.slug %}" class="text-muted readmore">Đọc thêm <i
+                                            class="uil uil-angle-right-b align-middle"></i></a>
+                                </div>
+                            </div>
+                        </div><!--end col-->
+                    </div> <!--end row-->
+                </div><!--end blog post-->
+                {% endfor %}
+                <!-- PAGINATION START -->
+                <div class="col-12">
+                    <ul class="pagination justify-content-center mb-0">
+                        {% if page.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}"
+                                                 aria-label="Previous">Prev</a></li>
+                        {% endif %}
 
-                    {% if page.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}"
-                                             aria-label="Next">Next</a>
-                    </li>
-                    {% endif %}
-                        </ul>
-                    </div><!--end col-->
-                    <!-- PAGINATION END -->
-                </div><!--end row-->
-            </div><!--end container-->
-        </section><!--end section -->
-        <!--Blog Lists End-->
+                        {% for i in page.paginator.page_range %}
+                        <li class="page-item{% if page.number == i %} active{% endif %}"><a class="page-link"
+                                                                                            href="?page={{ i }}">{{i}}</a>
+                        </li>
+                        {% endfor %}
 
-        
-        <!-- Footer Start -->
-        {% include  'partials/footer/footer-three.html' %}
-        <!-- Footer End -->
+                        {% if page.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}"
+                                                 aria-label="Next">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div><!--end col-->
+                <!-- PAGINATION END -->
+            </div><!--end row-->
+        </div><!--end container-->
+    </div>
+</section><!--end section -->
+<!--Blog Lists End-->
 
-        {% include  'partials/offcanvas-right.html' %}
-        {% include  'partials/switcherbar.html' %}
 
-        <!-- Back to top -->
-        <a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up" class="fea icon-sm icons align-middle"></i></a>
-        <!-- Back to top -->
+<!-- Footer Start -->
+{% include  'partials/footer/footer-three.html' %}
+<!-- Footer End -->
 
-        <!-- javascript -->
-        {% include  'partials/vendor-scripts.html' %}
-        <!-- Main Js -->
-        <script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
-        <script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
-        <script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
-    </body>
+{% include  'partials/offcanvas-right.html' %}
+{% include  'partials/switcherbar.html' %}
+
+<!-- Back to top -->
+<a href="#" onclick="topFunction()" id="back-to-top" class="back-to-top fs-5"><i data-feather="arrow-up"
+                                                                                 class="fea icon-sm icons align-middle"></i></a>
+<!-- Back to top -->
+
+<!-- javascript -->
+{% include  'partials/vendor-scripts.html' %}
+<!-- Main Js -->
+<script src='{% static "assets/libs/feather-icons/feather.min.js" %}'></script>
+<script src='{% static "assets/js/plugins.init.js" %}'></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
+<script src='{% static "assets/js/app.js" %}'></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
+</body>
 </html>

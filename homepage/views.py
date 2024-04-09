@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 from django.core.paginator import Paginator
 
+
 # Create your views here.
 def get_listing_latest(count=10):
     list_format_latest = []
@@ -27,6 +28,7 @@ def get_listing_latest(count=10):
         return list_format_latest
     return None
 
+
 def get_listing_change():
     list_format_latest = []
     api_key = 'ace6f6a9-d2fb-410e-b1c1-ef3e904e329d'
@@ -50,6 +52,7 @@ def get_listing_change():
                                        'market_cap': item['quote']['USD']['market_cap']})
         return list_format_latest
     return None
+
 
 def get_btc_price():
     # Replace 'YOUR_API_KEY' with your actual CoinMarketCap API key
@@ -79,12 +82,14 @@ def get_btc_price():
     else:
         return None
 
+
 def index(request):
     list_format_latest = get_listing_latest()
     print('+++++++++++++++', list_format_latest)
     btc_price = get_btc_price()
     if list_format_latest and btc_price:
-        return render(request=request, template_name="index.html", context={'list_format_latest': list_format_latest, 'btc':btc_price})
+        return render(request=request, template_name="index.html",
+                      context={'list_format_latest': list_format_latest, 'btc': btc_price})
     return render(request=request, template_name="index.html", context={'list_format_latest': None})
 
 
@@ -101,9 +106,8 @@ def market(request):
         page_number = request.GET.get('page')
         page = paginator.get_page(page_number)
 
-
-
-        return render(request=request, template_name='crypto-market.html', context={'page': page,'list_change':list_change})
+        return render(request=request, template_name='crypto-market.html',
+                      context={'page': page, 'list_change': list_change})
     return render(request=request, template_name="index.html", context={'list_format_latest': None})
 
 
@@ -123,5 +127,5 @@ def whitepapers(request):
     return render(request=request, template_name='crypto-whitepaper.html')
 
 
-
-
+def no_responsibility(request):
+    return render(request=request, template_name='no-responsibility.html')

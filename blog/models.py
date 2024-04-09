@@ -41,7 +41,7 @@ class BlogModel(models.Model):
     description = models.TextField(null=False)
     crypto_id = models.IntegerField(null=True, default=None, blank=True)
     content = RichTextField(null=False)
-    category = models.ForeignKey(BlogCategoryModel, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(BlogCategoryModel, null=True, on_delete=models.DO_NOTHING)
     status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
